@@ -1,0 +1,6 @@
+A simple app to help you keep track of what you want to achieve daily.
+
+By splitting your tasks into only three categories (Primary, Secondary and Tertiary). 
+
+You can also set a time limit for each task and the app will notify you when the time is up. 
+You can also set a reminder for each task.
