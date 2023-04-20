@@ -8,10 +8,12 @@
 import FirebaseFirestore
 import FirebaseAuth
 import Foundation
+import SwiftUI
+
 
 class TodoViewModel: ObservableObject {
     var category: Category = .primary
-    @Published var todos = [Todo]()
+    @Published var todos: [Todo] = .init()
     @Published var errorMessage: String?
     
     
@@ -30,7 +32,7 @@ class TodoViewModel: ObservableObject {
         let today = Timestamp(date: Date())
         let calendar = Calendar(identifier: .gregorian)
         let todayAtMidnight = calendar.startOfDay(for: today.dateValue())
-
+        
         db.collection("todos")
             .whereField("userId", isEqualTo: userId)
             .whereField("date", isGreaterThan: todayAtMidnight)
@@ -48,21 +50,24 @@ class TodoViewModel: ObservableObject {
             }
     }
     
-    func addTodo(text: String) {
+    func addTodo(todo: Todo) {
         guard let userId = auth.currentUser?.uid else { return }
-    
+        
         do {
-            let todo = Todo(
-                text: text,
-                date: .now,
-                category: category,
-                isFinsihed: false,
-                userId: userId
-            )
+            var newTodo = todo
+            newTodo.userId = userId
             
-            let _ = try db.collection("todos").addDocument(from: todo)
+            let _ = try db.collection("todos").addDocument(from: newTodo)
         } catch {
             self.errorMessage = "Can't save todo"
+        }
+    }
+    
+    func toggleDone(todo: Todo) {
+        var item = todo
+        withAnimation {
+            item.isFinsihed.toggle()
+            updateTodo(todo: item)
         }
     }
     

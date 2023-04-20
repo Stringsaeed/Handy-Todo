@@ -10,6 +10,7 @@ import SwiftUI
 struct TodoCategoryView: View {
     let category: Category
     @State var newTodoText: String = ""
+    @State var isAddTodoSheetPresented = false
     @ObservedObject var viewModel: TodoViewModel
     
     
@@ -19,46 +20,48 @@ struct TodoCategoryView: View {
     }
     
     var body: some View {
-        ScrollView {
-            if let error = viewModel.errorMessage {
-                Text(error)
-                    .font(.handWritten(10))
-                    .foregroundColor(.red)
-            }
-            HStack{
-                Label(category.rawValue, systemImage: category.getImageName())
-                .font(.handWritten(24))
-                Spacer()
-            }
-            TextField("New Todo", text: $newTodoText)
-                .font(.handWritten(20))
-                .onSubmit {
-                    viewModel.addTodo(text: newTodoText)
-                    newTodoText = ""
-                }
-                .padding(.bottom)
-                .accessibilityLabel("\(category.rawValue)_testInput")
-            ForEach(viewModel.todos, id: \.id) { item in
-                TodoView(item: item)
-                    .onTapGesture {
-                        withAnimation {
-                            var updateItem = item
-                            updateItem.isFinsihed.toggle()
-                            viewModel.updateTodo(todo: updateItem)
+        NavigationStack {
+            List {
+                ForEach(viewModel.todos) { item in
+                    TodoView(item: item)
+                        .onTapGesture {
+                            viewModel.toggleDone(todo: item)
                         }
+                }
+                .onDelete { viewModel.deleteTodos(at: $0) }
+            }
+            .listStyle(.plain)
+            .refreshable {
+                viewModel.getTodos()
+            }
+            .toolbar {
+#if os(iOS)
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isAddTodoSheetPresented = true
+                    } label: {
+                        Image(systemName: "plus")
                     }
-                    .padding(.bottom, 8)
-            }.onDelete(perform: viewModel.deleteTodos)
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("\(category.rawValue) (\(viewModel.todos.count))")
+                        .font(.handWritten(28))
+                        .font(.largeTitle)
+                }
+#endif
+            }
+            .sheet(isPresented: $isAddTodoSheetPresented, onDismiss: {
+                isAddTodoSheetPresented = false
+            }) {
+                NavigationView {
+                    AddTodoView(onDone: { todo in
+                        viewModel.addTodo(todo: todo)
+                        isAddTodoSheetPresented = false
+                    }, category: category)
+                }
+            }
             
         }
-        .frame(
-            minWidth: 0,
-            maxWidth: .infinity,
-            minHeight: 0,
-            maxHeight: .infinity,
-            alignment: .topLeading
-        )
-        .padding(.horizontal, 16)
     }
 }
 

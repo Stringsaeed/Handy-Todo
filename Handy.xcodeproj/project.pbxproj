@@ -24,6 +24,8 @@
 		302C18ED29EDCA4300848EB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 302C18EC29EDCA4300848EB1 /* GoogleService-Info.plist */; };
 		302C18EF29EDD07300848EB1 /* TodoCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302C18EE29EDD07300848EB1 /* TodoCategoryView.swift */; };
 		302C18F129EDD25600848EB1 /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302C18F029EDD25600848EB1 /* TodoView.swift */; };
+		3047C3BB29F0CFDA00BC4AF6 /* View+Rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3047C3BA29F0CFDA00BC4AF6 /* View+Rotate.swift */; };
+		3047C3BD29F0D86300BC4AF6 /* AddTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3047C3BC29F0D86300BC4AF6 /* AddTodoView.swift */; };
 		304D25BD29F095A800D71C70 /* HandyTodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304D25BC29F095A800D71C70 /* HandyTodoUITests.swift */; };
 		304D25BF29F095A800D71C70 /* HandyTodoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304D25BE29F095A800D71C70 /* HandyTodoUITestsLaunchTests.swift */; };
 		304D25C729F09A1700D71C70 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304D25C529F09A1700D71C70 /* SnapshotHelper.swift */; };
@@ -75,6 +77,8 @@
 		302C18EC29EDCA4300848EB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		302C18EE29EDD07300848EB1 /* TodoCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCategoryView.swift; sourceTree = "<group>"; };
 		302C18F029EDD25600848EB1 /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
+		3047C3BA29F0CFDA00BC4AF6 /* View+Rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Rotate.swift"; sourceTree = "<group>"; };
+		3047C3BC29F0D86300BC4AF6 /* AddTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoView.swift; sourceTree = "<group>"; };
 		304D25BA29F095A800D71C70 /* HandyTodoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HandyTodoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		304D25BC29F095A800D71C70 /* HandyTodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyTodoUITests.swift; sourceTree = "<group>"; };
 		304D25BE29F095A800D71C70 /* HandyTodoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyTodoUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -122,8 +126,8 @@
 				302C18EC29EDCA4300848EB1 /* GoogleService-Info.plist */,
 				302C18AA29EDBBB600848EB1 /* Handy */,
 				302C18BC29EDBBB700848EB1 /* HandyTests */,
-				302C18C629EDBBB700848EB1 /* HandyUITests */,
 				304D25BB29F095A800D71C70 /* HandyTodoUITests */,
+				302C18C629EDBBB700848EB1 /* HandyUITests */,
 				302C18A929EDBBB600848EB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -142,16 +146,16 @@
 		302C18AA29EDBBB600848EB1 /* Handy */ = {
 			isa = PBXGroup;
 			children = (
-				3047C3B929F0C00900BC4AF6 /* ViewModels */,
-				3047C3B829F0BFF400BC4AF6 /* Utils */,
-				3047C3B729F0BFDF00BC4AF6 /* Views */,
-				302C18DC29EDBD2000848EB1 /* Models */,
-				302C18D929EDBCBC00848EB1 /* Info.plist */,
 				302C18D629EDBBC200848EB1 /* Assets */,
-				302C18AB29EDBBB600848EB1 /* HandyApp.swift */,
 				302C18AF29EDBBB600848EB1 /* Assets.xcassets */,
 				302C18B129EDBBB600848EB1 /* Handy.entitlements */,
+				302C18AB29EDBBB600848EB1 /* HandyApp.swift */,
+				302C18D929EDBCBC00848EB1 /* Info.plist */,
+				302C18DC29EDBD2000848EB1 /* Models */,
 				302C18B229EDBBB600848EB1 /* Preview Content */,
+				3047C3B829F0BFF400BC4AF6 /* Utils */,
+				3047C3B929F0C00900BC4AF6 /* ViewModels */,
+				3047C3B729F0BFDF00BC4AF6 /* Views */,
 			);
 			path = Handy;
 			sourceTree = "<group>";
@@ -204,6 +208,7 @@
 				302C18AD29EDBBB600848EB1 /* ContentView.swift */,
 				302C18EE29EDD07300848EB1 /* TodoCategoryView.swift */,
 				302C18F029EDD25600848EB1 /* TodoView.swift */,
+				3047C3BC29F0D86300BC4AF6 /* AddTodoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,6 +218,7 @@
 			children = (
 				302C18DA29EDBCEE00848EB1 /* Font+Handwritten.swift */,
 				30CAA13B29EF5C55006E280A /* UIDevice+DeviceTypes.swift */,
+				3047C3BA29F0CFDA00BC4AF6 /* View+Rotate.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -410,9 +416,11 @@
 				302C18E029EDBD6B00848EB1 /* Category.swift in Sources */,
 				302C18AC29EDBBB600848EB1 /* HandyApp.swift in Sources */,
 				30CAA13C29EF5C55006E280A /* UIDevice+DeviceTypes.swift in Sources */,
+				3047C3BD29F0D86300BC4AF6 /* AddTodoView.swift in Sources */,
 				302C18EF29EDD07300848EB1 /* TodoCategoryView.swift in Sources */,
 				302C18DB29EDBCEE00848EB1 /* Font+Handwritten.swift in Sources */,
 				302C18DE29EDBD3000848EB1 /* Todo.swift in Sources */,
+				3047C3BB29F0CFDA00BC4AF6 /* View+Rotate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,7 +618,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -656,7 +664,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;

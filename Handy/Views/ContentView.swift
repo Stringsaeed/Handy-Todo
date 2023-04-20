@@ -9,41 +9,36 @@ import SwiftUI
 import FirebaseAuth
 
 struct ContentView: View {
+#if os(iOS)
+    @State private var orientation = UIDeviceOrientation.unknown
+#endif
+    
     var body: some View {
-        VStack {
+        VStack(spacing: .zero) {
             HeaderView()
-            
-            Grid {
-                GridRow {
-                    TodoCategoryView(category: .primary)
-                }
+                .padding(.horizontal)
+                .padding(.vertical, 8)
+#if os(iOS)
+            if UIDevice.isIPad || orientation.isLandscape {
                 Divider()
                     .overlay(.white)
-                
-                if UIDevice.isIPhone {
-                    GridRow {
-                        TodoCategoryView(category: .secondary)
-                    }
-                    .padding(.top, 16)
-                    Divider()
-                        .overlay(.white)
-                    GridRow {
-                        TodoCategoryView(category: .tertiary)
-                    }
-                    .padding(.top, 16)
-                } else if UIDevice.isIPad {
-                    GridRow {
-                        TodoCategoryView(category: .secondary)
-                        TodoCategoryView(category: .tertiary)
-                    }
-                    .padding(.top, 16)
-                }
+                GridPadView()
+            } else if UIDevice.isIPhone {
+                GridPhoneView()
             }
-            .padding(.all)
-            .frame(minWidth: 0, maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-            .background(.black)
-            .foregroundColor(.white)
+#elseif os(macOS)
+            Divider()
+                .overlay(.white)
+            GridPadView()
+#endif
         }
+        .background(.black)
+        .foregroundColor(.white)
+#if os(iOS)
+        .onRotate { newOrientation in
+            orientation = newOrientation
+        }
+#endif
     }
 }
 
@@ -71,6 +66,44 @@ struct HeaderView: View {
             Spacer()
             Text(date, style: .date)
                 .font(.handWritten(24))
+        }
+        .background(.black)
+    }
+}
+
+struct GridPadView: View {
+    var body: some View {
+        HStack(spacing: 0) {
+            TodoCategoryView(category: .primary)
+                .gridCellColumns(1)
+            Divider()
+                .overlay(.white)
+            VStack(spacing: .zero) {
+                TodoCategoryView(category: .secondary)
+                Divider()
+                    .overlay(.white)
+                TodoCategoryView(category: .tertiary)
+            }
+        }
+    }
+}
+
+struct GridPhoneView: View {
+    var body: some View {
+        Grid(verticalSpacing: .zero) {
+            GridRow {
+                TodoCategoryView(category: .primary)
+            }
+            Divider()
+                .overlay(.white)
+            GridRow {
+                TodoCategoryView(category: .secondary)
+            }
+            Divider()
+                .overlay(.white)
+            GridRow {
+                TodoCategoryView(category: .tertiary)
+            }
         }
     }
 }

@@ -8,7 +8,7 @@
 import FirebaseFirestoreSwift
 import Foundation
 
-struct Todo: Codable {
+struct Todo: Codable, Identifiable {
     @DocumentID var id: String?
     var text: String
     var date: Date? = .now

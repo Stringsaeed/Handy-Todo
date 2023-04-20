@@ -17,25 +17,26 @@ private let itemFormatter: DateFormatter = {
 
 struct TodoView: View {
     let item: Todo
-
+    
     var body: some View {
-        HStack {
-            Image(systemName: item.isFinsihed ?  "checkmark.circle.fill": "circle")
+        Label {
             Text(item.text)
-                .font(.handWritten(21))
                 .accessibilityLabel(item.text)
                 .accessibilityIdentifier(item.text)
+                .lineLimit(1)
             Spacer()
             Text("\(item.date!, formatter: itemFormatter)")
-                .font(.handWritten(21))
+        } icon: {
+            Image(systemName: item.isFinsihed ?  "checkmark.circle.fill": "circle")
+                .foregroundColor(.white)
         }
+        .font(.handWritten(21))
         .strikethrough(item.isFinsihed)
-
     }
 }
 
 struct TodoView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoView(item: .init(text: "test", date: .now, category: .primary, isFinsihed: false))
+        TodoView(item: .init(text: "test test test testtest testtesttesttesttest", date: .now, category: .primary, isFinsihed: false))
     }
 }
