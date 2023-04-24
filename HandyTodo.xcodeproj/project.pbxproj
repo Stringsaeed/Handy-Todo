@@ -1,0 +1,478 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		30976DBF29F6320700229416 /* HandyTodoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DBE29F6320700229416 /* HandyTodoApp.swift */; };
+		30976DC129F6320700229416 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DC029F6320700229416 /* Persistence.swift */; };
+		30976DC429F6320700229416 /* HandyTodo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 30976DC229F6320700229416 /* HandyTodo.xcdatamodeld */; };
+		30976DC629F6320700229416 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DC529F6320700229416 /* ContentView.swift */; };
+		30976DC829F6320800229416 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30976DC729F6320800229416 /* Assets.xcassets */; };
+		30976DCC29F6320800229416 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30976DCB29F6320800229416 /* Preview Assets.xcassets */; };
+		30976DD529F632CC00229416 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DD429F632CC00229416 /* CategoryModel.swift */; };
+		30976DD829F6334300229416 /* Font+Primary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DD729F6334300229416 /* Font+Primary.swift */; };
+		30976DDA29F6335F00229416 /* UIDevice+DeviceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DD929F6335F00229416 /* UIDevice+DeviceTypes.swift */; };
+		30976DDD29F6341E00229416 /* AddTodoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DDC29F6341E00229416 /* AddTodoItemView.swift */; };
+		30976DE029F6353700229416 /* TodoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DDF29F6353700229416 /* TodoItemView.swift */; };
+		30976DE329F6361B00229416 /* TodoCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DE229F6361B00229416 /* TodoCategoryView.swift */; };
+		30976DE629F6368C00229416 /* TodoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DE529F6368C00229416 /* TodoService.swift */; };
+		30976DEA29F638F100229416 /* TodoItem+ByCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DE929F638F100229416 /* TodoItem+ByCategory.swift */; };
+		30976DED29F713D800229416 /* EduQLDBeginner.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30976DEC29F713D800229416 /* EduQLDBeginner.ttf */; };
+		30ED7F6429F73162000DD6E4 /* View+Rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ED7F6329F73162000DD6E4 /* View+Rotate.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		30976DBB29F6320700229416 /* HandyTodo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandyTodo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		30976DBE29F6320700229416 /* HandyTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyTodoApp.swift; sourceTree = "<group>"; };
+		30976DC029F6320700229416 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		30976DC329F6320700229416 /* HandyTodo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HandyTodo.xcdatamodel; sourceTree = "<group>"; };
+		30976DC529F6320700229416 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		30976DC729F6320800229416 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		30976DC929F6320800229416 /* HandyTodo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HandyTodo.entitlements; sourceTree = "<group>"; };
+		30976DCB29F6320800229416 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		30976DD429F632CC00229416 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		30976DD729F6334300229416 /* Font+Primary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Primary.swift"; sourceTree = "<group>"; };
+		30976DD929F6335F00229416 /* UIDevice+DeviceTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+DeviceTypes.swift"; sourceTree = "<group>"; };
+		30976DDC29F6341E00229416 /* AddTodoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoItemView.swift; sourceTree = "<group>"; };
+		30976DDF29F6353700229416 /* TodoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemView.swift; sourceTree = "<group>"; };
+		30976DE229F6361B00229416 /* TodoCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCategoryView.swift; sourceTree = "<group>"; };
+		30976DE529F6368C00229416 /* TodoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoService.swift; sourceTree = "<group>"; };
+		30976DE929F638F100229416 /* TodoItem+ByCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoItem+ByCategory.swift"; sourceTree = "<group>"; };
+		30976DEC29F713D800229416 /* EduQLDBeginner.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EduQLDBeginner.ttf; sourceTree = "<group>"; };
+		30976DEE29F7141F00229416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		30ED7F6329F73162000DD6E4 /* View+Rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Rotate.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		30976DB829F6320700229416 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		30976DB229F6320700229416 = {
+			isa = PBXGroup;
+			children = (
+				30976DBD29F6320700229416 /* HandyTodo */,
+				30976DBC29F6320700229416 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		30976DBC29F6320700229416 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				30976DBB29F6320700229416 /* HandyTodo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		30976DBD29F6320700229416 /* HandyTodo */ = {
+			isa = PBXGroup;
+			children = (
+				30976DEE29F7141F00229416 /* Info.plist */,
+				30976DEB29F713C900229416 /* Fonts */,
+				30976DE429F6367B00229416 /* Services */,
+				30976DD629F6332A00229416 /* Utils */,
+				30976DD329F632C100229416 /* Models */,
+				30976DD229F632A200229416 /* Views */,
+				30976DBE29F6320700229416 /* HandyTodoApp.swift */,
+				30976DC029F6320700229416 /* Persistence.swift */,
+				30976DC729F6320800229416 /* Assets.xcassets */,
+				30976DC929F6320800229416 /* HandyTodo.entitlements */,
+				30976DC229F6320700229416 /* HandyTodo.xcdatamodeld */,
+				30976DCA29F6320800229416 /* Preview Content */,
+			);
+			path = HandyTodo;
+			sourceTree = "<group>";
+		};
+		30976DCA29F6320800229416 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				30976DCB29F6320800229416 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		30976DD229F632A200229416 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				30976DC529F6320700229416 /* ContentView.swift */,
+				30976DDC29F6341E00229416 /* AddTodoItemView.swift */,
+				30976DDF29F6353700229416 /* TodoItemView.swift */,
+				30976DE229F6361B00229416 /* TodoCategoryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		30976DD329F632C100229416 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				30976DD429F632CC00229416 /* CategoryModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		30976DD629F6332A00229416 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				30976DD729F6334300229416 /* Font+Primary.swift */,
+				30976DD929F6335F00229416 /* UIDevice+DeviceTypes.swift */,
+				30ED7F6329F73162000DD6E4 /* View+Rotate.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		30976DE429F6367B00229416 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				30976DE529F6368C00229416 /* TodoService.swift */,
+				30976DE929F638F100229416 /* TodoItem+ByCategory.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		30976DEB29F713C900229416 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				30976DEC29F713D800229416 /* EduQLDBeginner.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		30976DBA29F6320700229416 /* HandyTodo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 30976DCF29F6320800229416 /* Build configuration list for PBXNativeTarget "HandyTodo" */;
+			buildPhases = (
+				30976DB729F6320700229416 /* Sources */,
+				30976DB829F6320700229416 /* Frameworks */,
+				30976DB929F6320700229416 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HandyTodo;
+			productName = HandyTodo;
+			productReference = 30976DBB29F6320700229416 /* HandyTodo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		30976DB329F6320700229416 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					30976DBA29F6320700229416 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+				};
+			};
+			buildConfigurationList = 30976DB629F6320700229416 /* Build configuration list for PBXProject "HandyTodo" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 30976DB229F6320700229416;
+			productRefGroup = 30976DBC29F6320700229416 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				30976DBA29F6320700229416 /* HandyTodo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		30976DB929F6320700229416 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30976DCC29F6320800229416 /* Preview Assets.xcassets in Resources */,
+				30976DC829F6320800229416 /* Assets.xcassets in Resources */,
+				30976DED29F713D800229416 /* EduQLDBeginner.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		30976DB729F6320700229416 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30976DC429F6320700229416 /* HandyTodo.xcdatamodeld in Sources */,
+				30ED7F6429F73162000DD6E4 /* View+Rotate.swift in Sources */,
+				30976DDD29F6341E00229416 /* AddTodoItemView.swift in Sources */,
+				30976DBF29F6320700229416 /* HandyTodoApp.swift in Sources */,
+				30976DC629F6320700229416 /* ContentView.swift in Sources */,
+				30976DE329F6361B00229416 /* TodoCategoryView.swift in Sources */,
+				30976DEA29F638F100229416 /* TodoItem+ByCategory.swift in Sources */,
+				30976DD829F6334300229416 /* Font+Primary.swift in Sources */,
+				30976DE629F6368C00229416 /* TodoService.swift in Sources */,
+				30976DE029F6353700229416 /* TodoItemView.swift in Sources */,
+				30976DD529F632CC00229416 /* CategoryModel.swift in Sources */,
+				30976DC129F6320700229416 /* Persistence.swift in Sources */,
+				30976DDA29F6335F00229416 /* UIDevice+DeviceTypes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		30976DCD29F6320800229416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		30976DCE29F6320800229416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		30976DD029F6320800229416 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HandyTodo/HandyTodo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HandyTodo/Preview Content\"";
+				DEVELOPMENT_TEAM = V3HN8HXZYK;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HandyTodo/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stringsaeed.handy.todo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		30976DD129F6320800229416 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HandyTodo/HandyTodo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"HandyTodo/Preview Content\"";
+				DEVELOPMENT_TEAM = V3HN8HXZYK;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HandyTodo/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stringsaeed.handy.todo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		30976DB629F6320700229416 /* Build configuration list for PBXProject "HandyTodo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30976DCD29F6320800229416 /* Debug */,
+				30976DCE29F6320800229416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		30976DCF29F6320800229416 /* Build configuration list for PBXNativeTarget "HandyTodo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				30976DD029F6320800229416 /* Debug */,
+				30976DD129F6320800229416 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		30976DC229F6320700229416 /* HandyTodo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				30976DC329F6320700229416 /* HandyTodo.xcdatamodel */,
+			);
+			currentVersion = 30976DC329F6320700229416 /* HandyTodo.xcdatamodel */;
+			path = HandyTodo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 30976DB329F6320700229416 /* Project object */;
+}
