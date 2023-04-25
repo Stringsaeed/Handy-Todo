@@ -23,6 +23,7 @@
 		30976DEA29F638F100229416 /* TodoItem+ByCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DE929F638F100229416 /* TodoItem+ByCategory.swift */; };
 		30976DED29F713D800229416 /* EduQLDBeginner.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30976DEC29F713D800229416 /* EduQLDBeginner.ttf */; };
 		30ED7F6429F73162000DD6E4 /* View+Rotate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30ED7F6329F73162000DD6E4 /* View+Rotate.swift */; };
+		30ED7F6729F7978B000DD6E4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED7F6629F7978B000DD6E4 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		30976DEC29F713D800229416 /* EduQLDBeginner.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EduQLDBeginner.ttf; sourceTree = "<group>"; };
 		30976DEE29F7141F00229416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		30ED7F6329F73162000DD6E4 /* View+Rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Rotate.swift"; sourceTree = "<group>"; };
+		30ED7F6629F7978B000DD6E4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30ED7F6729F7978B000DD6E4 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +66,7 @@
 			children = (
 				30976DBD29F6320700229416 /* HandyTodo */,
 				30976DBC29F6320700229416 /* Products */,
+				30ED7F6529F7978B000DD6E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +149,14 @@
 				30976DEC29F713D800229416 /* EduQLDBeginner.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		30ED7F6529F7978B000DD6E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				30ED7F6629F7978B000DD6E4 /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
