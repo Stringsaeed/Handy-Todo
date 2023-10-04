@@ -5,28 +5,27 @@
 //  Created by Muhammed Saeed on 24/04/2023.
 //
 
-import SwiftUI
 import CoreData
 import Foundation
+import SwiftUI
 
 class TodoService: NSObject, ObservableObject {
     @Published var items: [TodoItem] = .init()
     private let byCategoryController: NSFetchedResultsController<TodoItem>
     private let context: NSManagedObjectContext
     
-    
     init(context: NSManagedObjectContext) {
         self.context = context
         self.byCategoryController = .init(fetchRequest: TodoItem.byCategory, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         
         super.init()
-        self.fetchData()
+        fetchData()
     }
     
     func fetchData() {
         do {
-            try self.byCategoryController.performFetch()
-            items = self.byCategoryController.fetchedObjects ?? []
+            try byCategoryController.performFetch()
+            items = byCategoryController.fetchedObjects ?? []
             print("date fetched", items)
         } catch {
             print("failed to fetch items!")
@@ -54,7 +53,7 @@ class TodoService: NSObject, ObservableObject {
     
     func toggleDone(todo: TodoItem) {
         withAnimation(.spring()) {
-            items.first(where: { $0.id == todo.id})?.setValue(!todo.isFinished, forKey: "isFinished")
+            items.first(where: { $0.id == todo.id })?.setValue(!todo.isFinished, forKey: "isFinished")
             saveContext()
         }
     }
@@ -62,15 +61,13 @@ class TodoService: NSObject, ObservableObject {
     func saveContext() {
         do {
             try context.save()
-            self.fetchData()
-        }
-        catch {
+            fetchData()
+        } catch {
             print(error.localizedDescription)
             // handle errro
         }
     }
 }
-
 
 extension TodoService: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {

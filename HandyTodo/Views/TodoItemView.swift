@@ -22,7 +22,6 @@ struct TodoItemView: View {
             Text(item.text ?? "")
                 .accessibilityLabel(item.text ?? "")
                 .accessibilityIdentifier(item.text ?? "")
-                .lineLimit(1)
             Spacer()
             Text("\(item.date ?? .now, formatter: itemFormatter)")
         } icon: {
@@ -30,6 +29,8 @@ struct TodoItemView: View {
                 .foregroundColor(.white)
         }
         .font(.handWritten(21))
+        .animation(.easeInOut, value: item.isFinished)
+        .transition(.slide)
         .strikethrough(item.isFinished)
     }
 }

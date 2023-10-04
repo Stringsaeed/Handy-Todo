@@ -14,7 +14,7 @@ struct TodoCategoryView: View {
     
     @FetchRequest(entity: TodoItem.entity(), sortDescriptors: [], predicate: nil) var items: FetchedResults<TodoItem>
     
-    init( category: Category) {
+    init(category: Category) {
         _items = FetchRequest(
             entity: TodoItem.entity(),
             sortDescriptors: [
@@ -25,6 +25,13 @@ struct TodoCategoryView: View {
         self.category = category
     }
     
+    var gesture: some Gesture {
+        TapGesture(count: 2)
+            .onEnded {
+                isAddTodoSheetPresented = true
+            }
+    }
+    
     var body: some View {
         NavigationStack {
             List {
@@ -33,11 +40,13 @@ struct TodoCategoryView: View {
                         self.toggleDone(todo: item)
                     } label: {
                         TodoItemView(item: item)
+                            .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.plain)
                 }
                 .onDelete { self.delete(at: $0) }
             }
+            .gesture(gesture)
             .background(.black)
             .listStyle(.plain)
             .frame(maxWidth: .infinity)
@@ -47,6 +56,7 @@ struct TodoCategoryView: View {
                         isAddTodoSheetPresented = true
                     } label: {
                         Image(systemName: "plus")
+                            .font(.handWritten())
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -61,9 +71,7 @@ struct TodoCategoryView: View {
                             .font(.largeTitle)
                     }
                 }
-                
             }
-    
             .animation(.default, value: items.count)
             .sheet(isPresented: $isAddTodoSheetPresented, onDismiss: {
                 isAddTodoSheetPresented = false
@@ -75,7 +83,6 @@ struct TodoCategoryView: View {
                     }, category: category)
                 }
             }
-            
         }
     }
 }
@@ -116,8 +123,7 @@ extension TodoCategoryView {
     func saveContext() {
         do {
             try viewContext.save()
-        }
-        catch {
+        } catch {
             print(error.localizedDescription)
             // handle errro
         }
