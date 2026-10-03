@@ -1,0 +1,161 @@
+/* Shared handy brand layer for screenshots and the preview video.
+   Colors mirror HandyTodo/Assets.xcassets; type is Oregano, the app's only typeface. */
+
+@font-face {
+  font-family: "Oregano";
+  src: url("../../HandyTodo/Fonts/Oregano-Regular.ttf") format("truetype");
+}
+
+:root {
+  --paper: #f6f1e6;
+  --ink: #2e382e;
+  --accent: #b54522;
+  --card: #fffcf5;
+  --secondary: #4f785e;
+  --tertiary: #6e669e;
+  --paper-dark: #1a1c19;
+  --ink-dark: #f1eee1;
+  --accent-dark: #ff9458;
+  --card-dark: #272a25;
+  --sand: #e7c899;
+  --sheet: #fff5dc;
+  --icon-ink: #293c31;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Oregano", sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+/* Warm paper with a faint grain, like the app background. */
+.paper {
+  background-color: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.18  0 0 0 0 0.16  0 0 0 0 0.1  0 0 0 0.55 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");
+  opacity: 0.09;
+  pointer-events: none;
+  z-index: 0;
+}
+.paper > * { position: relative; z-index: 1; }
+
+.dark-paper { background-color: var(--paper-dark); color: var(--ink-dark); }
+.dark-paper::before { opacity: 0.16; mix-blend-mode: screen; }
+.accent-paper { background-color: var(--accent); color: var(--card); }
+.accent-paper::before { opacity: 0.14; }
+
+/* Hand-drawn marks built from the app's own Arrow icon strokes. */
+.mark { position: relative; display: inline-block; white-space: nowrap; }
+.mark > svg.scribble {
+  position: absolute;
+  overflow: visible;
+  pointer-events: none;
+}
+.mark.circled > svg.scribble { left: -12%; top: -14%; width: 124%; height: 128%; }
+.mark.underlined > svg.scribble { left: -3%; bottom: -0.16em; width: 106%; height: 0.32em; }
+
+/* Device frames. --w is the screen width in px. */
+.phone {
+  --w: 900px;
+  --bezel: calc(var(--w) * 0.03);
+  --radius: calc(var(--w) * 0.142);
+  position: relative;
+  width: calc(var(--w) + var(--bezel) * 2);
+  padding: var(--bezel);
+  border-radius: calc(var(--radius) + var(--bezel));
+  background: linear-gradient(145deg, #4a4c48 0%, #1c1d1b 18%, #121311 60%, #3b3d39 100%);
+  box-shadow:
+    0 0 0 calc(var(--w) * 0.004) #5d5f5a inset,
+    0 calc(var(--w) * 0.06) calc(var(--w) * 0.12) rgba(46, 56, 46, 0.28),
+    0 calc(var(--w) * 0.012) calc(var(--w) * 0.03) rgba(46, 56, 46, 0.22);
+}
+.phone .screen {
+  position: relative;
+  width: var(--w);
+  aspect-ratio: 1320 / 2868;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+}
+.phone .screen > img, .phone .screen > video, .phone .screen > .frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.phone .island {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--w) * 0.026);
+  width: calc(var(--w) * 0.285);
+  height: calc(var(--w) * 0.083);
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #000;
+  z-index: 3;
+}
+
+.tablet {
+  --w: 1500px;
+  --bezel: calc(var(--w) * 0.026);
+  --radius: calc(var(--w) * 0.03);
+  position: relative;
+  width: calc(var(--w) + var(--bezel) * 2);
+  padding: var(--bezel);
+  border-radius: calc(var(--radius) + var(--bezel));
+  background: linear-gradient(145deg, #4a4c48 0%, #1c1d1b 15%, #121311 60%, #3b3d39 100%);
+  box-shadow:
+    0 0 0 calc(var(--w) * 0.003) #5d5f5a inset,
+    0 calc(var(--w) * 0.05) calc(var(--w) * 0.1) rgba(46, 56, 46, 0.26),
+    0 calc(var(--w) * 0.01) calc(var(--w) * 0.025) rgba(46, 56, 46, 0.2);
+}
+.tablet .screen {
+  width: var(--w);
+  aspect-ratio: 2064 / 2752;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.tablet .screen > img { display: block; width: 100%; height: 100%; }
+
+/* Home Screen widgets, mirroring HandyWidgets/HandyWidgets.swift. --pt is px per point. */
+.widget {
+  --pt: 3px;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: calc(var(--pt) * 23);
+  padding: calc(var(--pt) * 16);
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--pt) * 10);
+  box-shadow: 0 calc(var(--pt) * 10) calc(var(--pt) * 28) rgba(46, 56, 46, 0.22);
+  overflow: hidden;
+}
+.widget.small { width: calc(var(--pt) * 170); height: calc(var(--pt) * 170); gap: calc(var(--pt) * 6); }
+.widget.large { width: calc(var(--pt) * 364); height: calc(var(--pt) * 382); }
+.widget .date { font-size: calc(var(--pt) * 16); }
+.widget .count { display: flex; align-items: baseline; gap: calc(var(--pt) * 5); font-size: calc(var(--pt) * 16); }
+.widget .count b { font-weight: normal; color: var(--accent); font-size: calc(var(--pt) * 28); line-height: 1; }
+.widget.small .count b { font-size: calc(var(--pt) * 24); }
+.widget .task { display: flex; gap: calc(var(--pt) * 8); align-items: flex-start; }
+.widget .task svg { width: calc(var(--pt) * 18); height: calc(var(--pt) * 18); color: var(--accent); flex: none; margin-top: calc(var(--pt) * 2); }
+.widget .task .t { font-size: calc(var(--pt) * 20); line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.widget.small .task .t { font-size: calc(var(--pt) * 17); white-space: normal; }
+.widget .task .c { font-size: calc(var(--pt) * 13); opacity: 0.6; margin-top: calc(var(--pt) * 2); }
+.widget .spacer { flex: 1; }
+.widget .foot { font-size: calc(var(--pt) * 15); opacity: 0.6; }
+
+.app-icon {
+  border-radius: 22.5%;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(46, 56, 46, 0.25);
+}
+.app-icon img { width: 100%; height: 100%; display: block; }

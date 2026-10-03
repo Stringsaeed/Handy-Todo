@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="brand.css">
+<script src="brand.js"></script>
+<style>
+  html, body { width: 100vw; height: 100vh; overflow: hidden; }
+  #stage { position: absolute; inset: 0; }
+  .layer { position: absolute; inset: 0; }
+  .center { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+  #dark { clip-path: circle(0 at 88% 6%); }
+
+  /* Intro + outro icon and wordmark */
+  .logo { width: 30vh; height: 30vh; overflow: visible; }
+  .wordmark { font-size: 15vh; line-height: 1; margin-top: 3vh; color: var(--ink); }
+  .tagline { font-size: 5.6vh; margin-top: 3.2vh; text-align: center; line-height: 1.25; }
+  .tagline span { display: inline-block; }
+
+  /* Full-screen kinetic words */
+  #kinetic { font-size: 30vw; line-height: 0.9; text-align: center; }
+  #kinetic .w { position: absolute; inset: 0; display: grid; place-items: center; opacity: 0; }
+
+  /* Captions above the device */
+  #caption { position: absolute; left: 0; right: 0; top: 5vh; height: 16vh; text-align: center; }
+  #caption .cap { position: absolute; left: 0; right: 0; top: 0; font-size: min(12.5vw, 6.2vh); line-height: 1.05; opacity: 0; }
+  #caption .small { display: block; font-size: 0.48em; opacity: 0.6; margin-top: 1.2vh; }
+
+  #device { position: absolute; left: 50%; top: 24vh; transform-origin: 50% 0; }
+  #device .phone { --w: 36vh !important; }
+  #device .screen .frame { position: absolute; inset: 0; }
+  #fx { position: absolute; left: calc(36vh * 0.03); top: calc(36vh * 0.03); width: 36vh; aspect-ratio: 1320 / 2868; pointer-events: none; }
+  .ripple { position: absolute; width: 7vh; height: 7vh; margin: -3.5vh 0 0 -3.5vh; border-radius: 50%;
+    background: rgba(46, 56, 46, 0.18); border: 0.35vh solid rgba(46, 56, 46, 0.35); opacity: 0; }
+  .burst { position: absolute; width: 0; height: 0; opacity: 0; color: var(--accent); }
+  .burst svg { position: absolute; width: 9vh; height: 9vh; left: -4.5vh; top: -4.5vh; }
+  .burst i { position: absolute; width: 1.1vh; height: 1.1vh; margin: -0.55vh; border-radius: 50%; background: currentColor; }
+
+  /* Montage */
+  #montage > div { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; opacity: 0; }
+  #montage .tablet { --w: min(88vw, 52vh) !important; }
+  #flash img { position: absolute; left: 50%; top: 50%; height: 84vh; transform: translate(-50%, -50%); border-radius: 4vh; opacity: 0;
+    box-shadow: 0 3vh 8vh rgba(46,56,46,0.35); }
+
+</style>
+</head>
+<body>
+<div id="stage" class="paper"></div>
+<script>
+let TL;
+const $ = (s) => document.querySelector(s);
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const seg = (t, a, b) => clamp((t - a) / (b - a));
+const lerp = (a, b, p) => a + (b - a) * p;
+const outCubic = (p) => 1 - Math.pow(1 - p, 3);
+const inCubic = (p) => p * p * p;
+const inOut = (p) => (p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2);
+const outBack = (p, s = 1.9) => 1 + (s + 1) * Math.pow(p - 1, 3) + s * Math.pow(p - 1, 2);
+const show = (el, on) => { el.style.opacity = on ? 1 : 0; };
+
+// Pop a caption in on its start time and out when the next one arrives.
+function pop(el, t, a, b) {
+  const pin = seg(t, a, a + 0.32), pout = seg(t, b - 0.12, b);
+  if (t < a || t >= b) { el.style.opacity = 0; return; }
+  el.style.opacity = 1 - pout;
+  el.style.transform = `translateY(${(1 - outBack(pin)) * 3}vh) scale(${lerp(0.7, 1, outBack(pin)) - pout * 0.1}) rotate(${(1 - pin) * -4}deg)`;
+}
+// Reveal hand-drawn marks like a pen stroke: circles sweep around, underlines wipe left to right.
+function draw(el, t, a, d = 0.35) {
+  const p = outCubic(seg(t, a, a + d));
+  el.querySelectorAll("svg.scribble").forEach((svg) => {
+    if (svg.parentElement.classList.contains("circled")) {
+      svg.style.webkitMaskImage = svg.style.maskImage = `conic-gradient(from 200deg, #000 ${p * 360}deg, transparent ${p * 360}deg)`;
+    } else {
+      svg.style.clipPath = `inset(-50% ${(1 - p) * 100}% -50% -5%)`;
+    }
+  });
+}
+function clipTime(map, t) {
+  for (let i = 0; i < map.length - 1; i++) {
+    const [t0, c0] = map[i], [t1, c1] = map[i + 1];
+    if (t <= t1) return lerp(c0, c1, clamp((t - t0) / (t1 - t0)));
+  }
+  return map[map.length - 1][1];
+}
+
+function build() {
+  const caps = [
+    ["c-tap", 4.05, 8.0, `tap it. ${Handy.circled("done.")}`],
+    ["c-decide", 8.0, 9.0, `can't decide?`],
+    ["c-pick", 9.0, 11.0, `let handy ${Handy.underlined("pick.")}`],
+    ["c-now", 11.0, 12.0, `do it ${Handy.circled("now.")}`],
+    ["c-jot", 12.0, 14.6, `jot it down…`],
+    ["c-blink", 14.6, 16.0, `in a ${Handy.circled("blink.")}`],
+    ["c-night", 16.0, 18.0, `day or ${Handy.underlined("night.", "var(--accent-dark)")}`],
+    ["c-ipad", 18.0, 18.75, `on ${Handy.underlined("ipad.")}`],
+    ["c-home", 18.75, 19.55, `on your<br>${Handy.underlined("home screen.")}`],
+  ];
+  $("#stage").innerHTML = `
+    <div id="dark" class="layer dark-paper paper"></div>
+    <div id="intro" class="layer center">${Handy.iconSVG("logo")}<div class="wordmark">handy</div></div>
+    <div id="kinetic" class="layer">
+      ${[["so", "var(--paper)", "var(--ink)"], ["much", "var(--ink)", "var(--paper)"], ["to", "var(--accent)", "var(--card)"], ["do?", "var(--ink)", "var(--paper)"]]
+        .map(([w, bg, fg]) => `<div class="w" style="background:${bg};color:${fg}">${w}</div>`).join("")}
+      <div class="w paper" id="k-get" style="font-size:20vw;line-height:1.05">get<br>${Handy.circled("handy.")}</div>
+    </div>
+    <div id="caption">${caps.map(([id, , , html]) => `<div class="cap" id="${id}">${html}</div>`).join("")}</div>
+    <div id="device">${Handy.phone("", 400)}<div id="fx">
+      ${TL.taps.map((_, i) => `<div class="ripple" id="r${i}"></div>`).join("")}
+      ${TL.bursts.map((_, i) => `<div class="burst" id="b${i}">${Handy.icon("completed")}${[...Array(8)].map(() => "<i></i>").join("")}</div>`).join("")}
+    </div></div>
+    <div id="montage" class="layer">
+      <div id="m-ipad">${Handy.tablet("../raw/ipad-list.png", 400)}</div>
+      <div id="m-widgets" style="flex-direction:column;gap:3vh">${Handy.widget("large", 0)}<div style="display:flex;gap:4vw;align-items:center">${Handy.widget("small", 0)}<div class="app-icon" style="width:13vh;height:13vh;box-shadow:none;border-radius:0"><img src="../../HandyTodo/HandyIcon-preview.png"></div></div></div>
+    </div>
+    <div id="flash" class="layer">${["iphone-6.9/01-hero", "iphone-6.9/03-do-now", "iphone-6.9/05-dark", "iphone-6.9/06-widgets"]
+      .map((f) => `<img src="../out/screenshots/${f}.png">`).join("")}</div>
+    <div id="outro" class="layer center">${Handy.iconSVG("logo")}<div class="wordmark">handy</div>
+      <div class="tagline"><span>a little ${Handy.circled("focus,")}</span><br><span>a lot done.</span></div></div>`;
+  window.CAPS = caps;
+  document.querySelectorAll(".logo .ic-check, .logo .ic-lines").forEach((p) => {
+    p.setAttribute("pathLength", "1"); p.style.strokeDasharray = 1;
+  });
+  // Widgets sized from the viewport: --pt is px per point.
+  document.querySelector("#m-widgets .widget.large").style.setProperty("--pt", `${(window.innerWidth * 0.8) / 364}px`);
+  document.querySelector("#m-widgets .widget.small").style.setProperty("--pt", `${(window.innerHeight * 0.13) / 170}px`);
+  // Particle directions
+  document.querySelectorAll(".burst").forEach((b) => b.querySelectorAll("i").forEach((d, k) => { d.dataset.a = (k / 8) * Math.PI * 2 + 0.3; }));
+}
+
+function animateLogo(root, t, a) {
+  const svg = root.querySelector(".logo");
+  const bg = seg(t, a, a + 0.4), back = seg(t, a + 0.18, a + 0.6), paper = seg(t, a + 0.3, a + 0.68);
+  svg.style.transform = `scale(${outBack(bg, 1.6)}) rotate(${(1 - outCubic(bg)) * -25}deg)`;
+  svg.querySelector(".ic-back").style.transform = `translate(${(1 - outCubic(back)) * -220}px, ${(1 - outCubic(back)) * 140}px) rotate(${(1 - outCubic(back)) * -30}deg)`;
+  svg.querySelector(".ic-back").style.transformOrigin = "512px 512px";
+  svg.querySelector(".ic-back").style.opacity = back > 0 ? 1 : 0;
+  svg.querySelector(".ic-paper").style.transform = `translateY(${(1 - outBack(paper, 1.4)) * -700}px)`;
+  svg.querySelector(".ic-paper").style.opacity = paper > 0 ? 1 : 0;
+  svg.querySelector(".ic-check").style.strokeDashoffset = 1 - outCubic(seg(t, a + 0.6, a + 0.9));
+  svg.querySelector(".ic-lines").style.strokeDashoffset = 1 - outCubic(seg(t, a + 0.8, a + 1.05));
+  const wm = seg(t, a + 0.75, a + 1.15);
+  const word = root.querySelector(".wordmark");
+  word.style.clipPath = `inset(0 ${100 - outCubic(wm) * 100}% 0 0)`;
+  word.style.transform = `translateY(${(1 - outCubic(wm)) * 2}vh)`;
+}
+
+let lastSrc = "";
+async function render(t) {
+  // Intro (0–2s)
+  const intro = $("#intro");
+  show(intro, t < 2.0);
+  if (t < 2.0) {
+    animateLogo(intro, t, 0.05);
+    const z = inCubic(seg(t, 1.72, 2.0));
+    intro.style.transform = `scale(${1 + z * 6})`;
+    intro.style.opacity = 1 - z;
+  }
+
+  // Kinetic words (2–4s): one word per sixteenth note, then "get handy."
+  const words = document.querySelectorAll("#kinetic .w");
+  [2.0, 2.25, 2.5, 2.75].forEach((a, i) => {
+    const on = t >= a && t < a + 0.25;
+    words[i].style.opacity = on ? 1 : 0;
+    if (on) words[i].style.transform = `scale(${lerp(1.35, 1, outCubic(seg(t, a, a + 0.18)))})`;
+  });
+  const get = $("#k-get");
+  pop(get, t, 3.0, 4.0);
+  if (t >= 3.0 && t < 4.0) { get.style.opacity = 1; draw(get, t, 3.25, 0.4); }
+
+  // Background switches: dark wipe for the night scene
+  const dark = seg(t, 15.95, 16.4);
+  $("#dark").style.clipPath = `circle(${t >= 18.0 ? 0 : outCubic(dark) * 160}% at 88% 6%)`;
+  const night = t >= 16.0 && t < 18.0;
+  $("#caption").style.color = night ? "var(--ink-dark)" : "var(--ink)";
+
+  // Captions
+  for (const [id, a, b] of CAPS) {
+    const el = document.getElementById(id);
+    pop(el, t, a, b);
+    draw(el, t, a + 0.15, 0.4);
+  }
+  // Punch "done." on each later completion
+  const done = $("#c-tap .mark");
+  const punch = Math.max(...[6.0, 7.0].map((a) => (t >= a ? Math.exp(-(t - a) * 9) * (t < a + 0.6 ? 1 : 0) : 0)));
+  done.style.display = "inline-block";
+  done.style.transform = `scale(${1 + punch * 0.28}) rotate(${punch * -6}deg)`;
+  $("#c-tap .mark").style.opacity = t >= 4.85 ? 1 : 0;
+  draw($("#c-tap"), t, 4.95, 0.35);
+
+  // Device (4–18s)
+  const device = $("#device");
+  const devOn = t >= 4.0 && t < 18.0;
+  device.style.opacity = devOn ? 1 : 0;
+  if (devOn) {
+    const enter = outBack(seg(t, 4.0, 4.45), 1.3);
+    const exit = inCubic(seg(t, 17.75, 18.0));
+    let zoom = 1, origin = "50% 0%";
+    const zIn = (a, b, z, o) => { const p = inOut(seg(t, a, a + 0.45)) * (1 - inOut(seg(t, b - 0.4, b))); if (p > 0) { zoom = 1 + (z - 1) * p; origin = o; } };
+    zIn(9.0, 11.85, 1.26, "50% 9%");
+    zIn(12.3, 15.85, 1.24, "50% 12%");
+    device.style.transformOrigin = origin;
+    device.style.transform = `translateX(-50%) translateY(${(1 - enter) * 80 + exit * 90}vh) rotate(${(1 - enter) * 8}deg) scale(${zoom})`;
+
+    let clip = "takeA-complete";
+    if (t >= 8.0) clip = "takeA-shuffle";
+    if (t >= 12.0) clip = "takeB-add";
+    if (t >= 16.1) clip = "takeC-dark";
+    const c = TL.clips[clip];
+    const frame = Math.max(1, Math.round(clipTime(c.map, t) * 30) + 1);
+    const src = `../build/frames/${c.file}/${String(frame).padStart(5, "0")}.jpg`;
+    const img = device.querySelector(".screen img");
+    if (src !== lastSrc) { img.src = src; lastSrc = src; await img.decode().catch(() => {}); }
+
+    TL.taps.forEach(([a, x, y], i) => {
+      const r = document.getElementById(`r${i}`), p = seg(t, a - 0.08, a + 0.32);
+      r.style.left = `${x * 100}%`; r.style.top = `${y * 100}%`;
+      r.style.opacity = p > 0 && p < 1 ? (p < 0.25 ? p * 4 : 1 - (p - 0.25) / 0.75) : 0;
+      r.style.transform = `scale(${lerp(0.4, 1.3, outCubic(p))})`;
+    });
+    TL.bursts.forEach(([a, x, y], i) => {
+      const b = document.getElementById(`b${i}`), p = seg(t, a, a + 0.6);
+      b.style.left = `${x * 100}%`; b.style.top = `${y * 100}%`;
+      b.style.color = a > 16 ? "var(--accent-dark)" : "var(--accent)";
+      b.style.opacity = p > 0 && p < 1 ? 1 - inCubic(seg(p, 0.5, 1)) : 0;
+      b.querySelector("svg").style.transform = `scale(${outBack(seg(p, 0, 0.45), 2.4) * 1.0})`;
+      b.querySelectorAll("i").forEach((d) => {
+        const dist = outCubic(p) * 9;
+        d.style.transform = `translate(${Math.cos(d.dataset.a) * dist}vh, ${Math.sin(d.dataset.a) * dist}vh) scale(${1 - p})`;
+      });
+    });
+  }
+
+  // Montage (18–20s)
+  const ipad = $("#m-ipad"), widgets = $("#m-widgets");
+  ipad.style.opacity = t >= 18.0 && t < 18.75 ? 1 : 0;
+  if (t >= 18.0 && t < 18.75) ipad.style.transform = `translateY(8vh) scale(${lerp(1.18, 1, outCubic(seg(t, 18.0, 18.4)))})`;
+  widgets.style.opacity = t >= 18.75 && t < 19.55 ? 1 : 0;
+  if (t >= 18.75 && t < 19.55) widgets.style.transform = `translateY(9vh) scale(${lerp(0.82, 1, outBack(seg(t, 18.75, 19.1)))}) rotate(${lerp(-5, 0, outCubic(seg(t, 18.75, 19.1)))}deg)`;
+  $("#caption").style.zIndex = 5;
+
+  // Flash cuts (19.55–20s), an eighth of a beat each
+  document.querySelectorAll("#flash img").forEach((img, i) => {
+    const a = 19.55 + i * 0.1125;
+    img.style.opacity = t >= a && t < a + 0.1125 ? 1 : 0;
+    img.style.transform = `translate(-50%, -50%) rotate(${[-4, 3, -2, 5][i]}deg) scale(${lerp(1.08, 1, seg(t, a, a + 0.1125))})`;
+  });
+
+  // Outro (20–24s)
+  const outro = $("#outro");
+  show(outro, t >= 20.0);
+  if (t >= 20.0) {
+    animateLogo(outro, t, 20.0);
+    const tag = outro.querySelectorAll(".tagline > span");
+    [21.0, 21.5].forEach((a, i) => {
+      const p = seg(t, a, a + 0.32);
+      tag[i].style.opacity = p > 0 ? 1 : 0;
+      tag[i].style.transform = `translateY(${(1 - outBack(p)) * 2.5}vh) scale(${lerp(0.75, 1, outBack(p))})`;
+    });
+    draw(outro.querySelector(".tagline"), t, 22.0, 0.5);
+    outro.style.transform = `scale(${1 + seg(t, 20.6, 24) * 0.04})`;
+  }
+  return true;
+}
+
+(async () => {
+  TL = await (await fetch("video-timeline.json")).json();
+  await Handy.load();
+  build();
+  await Promise.all([...document.images].map((img) => img.decode().catch(() => {})));
+  await render(0);
+  window.render = render;
+  window.READY = true;
+})();
+</script>
+</body>
+</html>

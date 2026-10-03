@@ -1,0 +1,12 @@
+{
+  "name": "handy-marketing",
+  "private": true,
+  "description": "App Store screenshots and preview video for handy",
+  "scripts": {
+    "screenshots": "node scripts/render-screenshots.cjs",
+    "video": "node scripts/render-video.cjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.63.0"
+  }
+}
