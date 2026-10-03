@@ -23,11 +23,11 @@
 		30ED7F6729F7978B000DD6E4 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30ED7F6629F7978B000DD6E4 /* CloudKit.framework */; };
 		3C4619B2EE2C8EB71DDA3E85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 30976DC729F6320800229416 /* Assets.xcassets */; };
 		4495C06D80210ABD4D6D1D4E /* Font+Primary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30976DD729F6334300229416 /* Font+Primary.swift */; };
-		469F0A010E41CD8B094D0CAA /* Boris.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E2C6F495A0287D0F9D5367A /* Boris.ttf */; };
+		469F0A010E41CD8B094D0CAA /* Oregano-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E2C6F495A0287D0F9D5367A /* Oregano-Regular.ttf */; };
 		4712A0636E9567CDC1BE8725 /* WidgetSnapshotPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DF152FED3D6B31040053836 /* WidgetSnapshotPublisher.swift */; };
 		4EDE166DD888A642E82994A3 /* WidgetSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAFF8228C0DC56177B51CC8B /* WidgetSnapshot.swift */; };
 		55D2C7F59F468763B5B1820D /* HandySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EC795CA26796567B8EABE8 /* HandySymbol.swift */; };
-		63063BC1D3AF00FCEB01FE73 /* Boris-License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3EF957B6E2B9CA18DF23487C /* Boris-License.txt */; };
+		63063BC1D3AF00FCEB01FE73 /* Oregano-License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3EF957B6E2B9CA18DF23487C /* Oregano-License.txt */; };
 		6C6A9D7ED1A45A76EC8B500B /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26280C907690AEF85CD8C08 /* TodoItem.swift */; };
 		6DB58E500D8CE7203D98D109 /* HandySymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EC795CA26796567B8EABE8 /* HandySymbol.swift */; };
 		70C4B4A302B8CFBBCA280412 /* HandyFeedbackSymbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A78EB5DCC75451C51EA21E /* HandyFeedbackSymbol.swift */; };
@@ -39,8 +39,8 @@
 		A4864BE55136913CE16DA571 /* complete.wav in Resources */ = {isa = PBXBuildFile; fileRef = 76ECB5695733B0B3DA527376 /* complete.wav */; };
 		B34CB1F2CE2E325A9F230F44 /* HandyWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9390360B319F52CDF9C793 /* HandyWidgets.swift */; };
 		C628D6511D1A0650C65CC6AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55BD291F213035828BA79E01 /* Foundation.framework */; };
-		CED34C549156BF20865F5F38 /* Boris.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E2C6F495A0287D0F9D5367A /* Boris.ttf */; };
-		D48667A7D9CDF941C0D88B9F /* Boris-License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3EF957B6E2B9CA18DF23487C /* Boris-License.txt */; };
+		CED34C549156BF20865F5F38 /* Oregano-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E2C6F495A0287D0F9D5367A /* Oregano-Regular.ttf */; };
+		D48667A7D9CDF941C0D88B9F /* Oregano-License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3EF957B6E2B9CA18DF23487C /* Oregano-License.txt */; };
 		EB4D53AD6D0778F2F5318DC3 /* TaskFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45ECB29225405FC74577DC5C /* TaskFeedback.swift */; };
 		F1B190F27E0A554DF0623232 /* HandyIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 8567077C3A0D2E108451E5E6 /* HandyIcon.icon */; };
 /* End PBXBuildFile section */
@@ -71,7 +71,7 @@
 
 /* Begin PBXFileReference section */
 		017649BC3EECD697C52E9F32 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2E2C6F495A0287D0F9D5367A /* Boris.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = Boris.ttf; sourceTree = "<group>"; };
+		2E2C6F495A0287D0F9D5367A /* Oregano-Regular.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = Oregano-Regular.ttf; sourceTree = "<group>"; };
 		30976DBB29F6320700229416 /* handy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = handy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30976DBE29F6320700229416 /* HandyTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyTodoApp.swift; sourceTree = "<group>"; };
 		30976DC029F6320700229416 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -85,13 +85,12 @@
 		30976DDC29F6341E00229416 /* AddTodoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoItemView.swift; sourceTree = "<group>"; };
 		30976DDF29F6353700229416 /* TodoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemView.swift; sourceTree = "<group>"; };
 		30976DE229F6361B00229416 /* TodoCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCategoryView.swift; sourceTree = "<group>"; };
-		30976DEC29F713D800229416 /* EduQLDBeginner.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EduQLDBeginner.ttf; sourceTree = "<group>"; };
 		30976DEE29F7141F00229416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		30ED7F6329F73162000DD6E4 /* View+Rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Rotate.swift"; sourceTree = "<group>"; };
 		30ED7F6629F7978B000DD6E4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		343A4FF33C35CC7793E03C50 /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3B5D6BF25A32D0DD5B015770 /* HandyWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HandyWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EF957B6E2B9CA18DF23487C /* Boris-License.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Boris-License.txt"; sourceTree = "<group>"; };
+		3EF957B6E2B9CA18DF23487C /* Oregano-License.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Oregano-License.txt"; sourceTree = "<group>"; };
 		45ECB29225405FC74577DC5C /* TaskFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskFeedback.swift; sourceTree = "<group>"; };
 		4A9390360B319F52CDF9C793 /* HandyWidgets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HandyWidgets.swift; sourceTree = "<group>"; };
 		50EC795CA26796567B8EABE8 /* HandySymbol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HandySymbol.swift; sourceTree = "<group>"; };
@@ -240,9 +239,8 @@
 		30976DEB29F713C900229416 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				30976DEC29F713D800229416 /* EduQLDBeginner.ttf */,
-				2E2C6F495A0287D0F9D5367A /* Boris.ttf */,
-				3EF957B6E2B9CA18DF23487C /* Boris-License.txt */,
+				2E2C6F495A0287D0F9D5367A /* Oregano-Regular.ttf */,
+				3EF957B6E2B9CA18DF23487C /* Oregano-License.txt */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -367,8 +365,8 @@
 			files = (
 				30976DCC29F6320800229416 /* Preview Assets.xcassets in Resources */,
 				30976DC829F6320800229416 /* Assets.xcassets in Resources */,
-				CED34C549156BF20865F5F38 /* Boris.ttf in Resources */,
-				63063BC1D3AF00FCEB01FE73 /* Boris-License.txt in Resources */,
+				CED34C549156BF20865F5F38 /* Oregano-Regular.ttf in Resources */,
+				63063BC1D3AF00FCEB01FE73 /* Oregano-License.txt in Resources */,
 				A4864BE55136913CE16DA571 /* complete.wav in Resources */,
 				96017262AA87B72AC8BAA026 /* delete.wav in Resources */,
 				F1B190F27E0A554DF0623232 /* HandyIcon.icon in Resources */,
@@ -379,8 +377,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				469F0A010E41CD8B094D0CAA /* Boris.ttf in Resources */,
-				D48667A7D9CDF941C0D88B9F /* Boris-License.txt in Resources */,
+				469F0A010E41CD8B094D0CAA /* Oregano-Regular.ttf in Resources */,
+				D48667A7D9CDF941C0D88B9F /* Oregano-License.txt in Resources */,
 				3C4619B2EE2C8EB71DDA3E85 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -655,7 +653,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = HandyWidgets/HandyWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_TEAM = V3HN8HXZYK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HandyWidgets/Info.plist;
@@ -684,7 +682,7 @@
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_ENTITLEMENTS = HandyWidgets/HandyWidgets.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_TEAM = V3HN8HXZYK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HandyWidgets/Info.plist;

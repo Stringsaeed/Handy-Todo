@@ -27,9 +27,9 @@ struct SettingsView: View {
                 }
                 Section("made with open source") {
                     Link("handy on github", destination: URL(string: "https://github.com/Stringsaeed/Handy-Todo")!)
-                    NavigationLink("boris · giulia boggio") {
-                        FontLicenseView(title: "Boris", credit: "Designed by Giulia Boggio. © 2021. Used for Handy's app text.",
-                                        resource: "Boris-License", ext: "txt")
+                    NavigationLink("oregano · astigmatic") {
+                        FontLicenseView(title: "Oregano", credit: "Designed by Brian J. Bonislawsky, Astigmatic. © 2012. Used for Handy's app text under the SIL Open Font License 1.1.",
+                                        resource: "Oregano-License", ext: "txt")
                     }
                     Text("font licenses apply to their respective fonts. original handy feedback sounds are included in the source code.")
                         .font(.handWritten(15))
@@ -42,8 +42,7 @@ struct SettingsView: View {
             .foregroundStyle(HandyTheme.ink)
             .toolbarBackground(HandyTheme.paper, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
-            .navigationTitle("settings")
-            .navigationBarTitleDisplayMode(.inline)
+            .handyNavigationTitle("settings")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button { dismiss() } label: {
@@ -82,7 +81,6 @@ private struct FontLicenseView: View {
         }
         .background(HandyTheme.paper.ignoresSafeArea())
         .foregroundStyle(HandyTheme.ink)
-        .navigationTitle(title.lowercased())
-        .navigationBarTitleDisplayMode(.inline)
+        .handyNavigationTitle(title.lowercased())
     }
 }

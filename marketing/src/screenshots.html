@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="brand.css">
+<script src="brand.js"></script>
+<style>
+  body { background: #888; }
+  .shot { display: flex; flex-direction: column; align-items: center; margin-bottom: 40px; }
+  .shot.iphone { width: 1320px; height: 2868px; }
+  .shot.ipad { width: 2064px; height: 2752px; }
+
+  .head { text-align: center; padding: 0 100px; }
+  .iphone .head { padding-top: 190px; }
+  .ipad .head { padding-top: 170px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 22px; font-size: 54px; color: var(--accent); margin-bottom: 26px; }
+  .eyebrow svg { width: 60px; height: 60px; }
+  h1 { font-weight: normal; font-size: 150px; line-height: 1.04; letter-spacing: -0.005em; }
+  .ipad h1 { font-size: 168px; }
+  .sub { font-size: 60px; line-height: 1.2; opacity: 0.62; margin-top: 36px; }
+  .ipad .sub { font-size: 66px; }
+
+  .bottom { position: absolute; left: 50%; transform: translateX(-50%); }
+  .crop { position: absolute; background-repeat: no-repeat; box-shadow: 0 40px 90px rgba(46,56,46,0.32), 0 8px 22px rgba(46,56,46,0.18); }
+
+  .chip {
+    position: absolute; width: 560px; padding: 34px 38px; border-radius: 48px;
+    background: var(--card); box-shadow: 0 30px 70px rgba(46,56,46,0.22), 0 6px 16px rgba(46,56,46,0.12);
+  }
+  .chip .row { display: flex; align-items: center; gap: 22px; font-size: 70px; }
+  .chip .num { width: 82px; height: 82px; border-radius: 50%; display: grid; place-items: center; font-size: 50px; }
+  .chip .why { font-size: 40px; opacity: 0.6; margin-top: 12px; }
+
+  .badge {
+    position: absolute; width: 240px; height: 240px; border-radius: 50%; background: var(--card);
+    display: grid; place-items: center; color: var(--accent);
+    box-shadow: 0 30px 70px rgba(46,56,46,0.25), 0 6px 16px rgba(46,56,46,0.12);
+  }
+  .badge svg { width: 132px; height: 132px; }
+  .doodle { position: absolute; color: var(--accent); }
+
+  .wallpaper {
+    background:
+      radial-gradient(circle at 15% 20%, rgba(181,69,34,0.30), transparent 42%),
+      radial-gradient(circle at 90% 45%, rgba(79,120,94,0.30), transparent 45%),
+      radial-gradient(circle at 25% 90%, rgba(110,102,158,0.28), transparent 45%),
+      linear-gradient(160deg, #f3e3c4 0%, #f6f1e6 55%, #efe2cc 100%);
+  }
+  .home-row { position: absolute; display: flex; align-items: flex-start; gap: 90px; }
+  .app-tile { display: flex; flex-direction: column; align-items: center; gap: 26px; font-size: 56px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const RAW = "../raw";
+const iconImg = (size) => `<div class="app-icon" style="width:${size}px;height:${size}px;box-shadow:none;border-radius:0"><img src="../../HandyTodo/HandyIcon-preview.png"></div>`;
+
+// Crop part of a raw 1320-wide capture into a floating, enlarged callout.
+function crop(file, [x, y, w, h], width, style = "", source = 1320) {
+  const s = width / w;
+  return `<div class="crop" style="width:${width}px;height:${h * s}px;background-image:url(${RAW}/${file});
+    background-size:${source * s}px auto;background-position:-${x * s}px -${y * s}px;border-radius:${48 * s}px;${style}"></div>`;
+}
+
+const shots = [
+  // ── iPhone 6.9" (1320 × 2868) ──
+  ["iphone", "01-hero", "paper", () => `
+    <div class="head" style="padding-top:150px">
+      <div style="display:flex;justify-content:center;margin-bottom:40px">${iconImg(210)}</div>
+      <h1 style="font-size:168px">a little ${Handy.circled("focus")},<br>a lot done.</h1>
+      <div class="sub">the calm, hand-written to-do list.</div>
+    </div>
+    <div class="bottom" style="top:1010px">${Handy.phone(`${RAW}/iphone-list.png`, 1000)}</div>`],
+
+  ["iphone", "02-priorities", "paper", () => `
+    <div class="head">
+      <h1>three piles.<br>${Handy.underlined("zero")} overwhelm.</h1>
+      <div class="sub">sort every task by how much it matters.</div>
+    </div>
+    <div style="position:absolute;left:70px;top:930px">${Handy.phone(`${RAW}/iphone-list.png`, 820)}</div>
+    ${[["1", "primary", "make room for what matters", "var(--accent)", 1190],
+       ["2", "secondary", "next on your list", "var(--secondary)", 1710],
+       ["3", "tertiary", "whenever you have a moment", "var(--tertiary)", 2230]].map(([n, t, why, c, top], i) => `
+      <div class="chip" style="left:${700 + (i % 2) * 20}px;top:${top}px;transform:rotate(${[-2.5, 2, -1.5][i]}deg)">
+        <div class="row"><span class="num" style="background:color-mix(in srgb, ${c} 15%, transparent);color:${c}">${n}</span>${t}</div>
+        <div class="why">${why}</div>
+      </div>`).join("")}`],
+
+  ["iphone", "03-do-now", "paper accent-paper", () => `
+    <div class="head">
+      <div class="eyebrow" style="color:var(--card)">${Handy.icon("shuffle")} one tap</div>
+      <h1>can't decide?<br>let handy ${Handy.underlined("pick.", "var(--card)")}</h1>
+    </div>
+    <div class="bottom" style="top:850px">${Handy.phone(`${RAW}/iphone-donow.png`, 860)}</div>
+    ${crop("iphone-donow.png", [44, 338, 1232, 262], 1180, "left:70px;top:1040px;transform:rotate(-2.5deg)")}`],
+
+  ["iphone", "04-add", "paper", () => `
+    <div class="head">
+      <h1>jot it down<br>in a ${Handy.circled("blink.")}</h1>
+      <div class="sub">add tasks right where they belong.</div>
+    </div>
+    <div class="bottom" style="top:850px">${Handy.phone(`${RAW}/iphone-add.png`, 860)}</div>
+    ${crop("iphone-add.png", [44, 570, 1232, 238], 1180, "left:70px;top:1215px;transform:rotate(-2deg)")}`],
+
+  ["iphone", "05-dark", "paper dark-paper", () => `
+    <div class="head">
+      <h1 style="font-size:132px">easy on the eyes,<br>day or ${Handy.underlined("night.", "var(--accent-dark)")}</h1>
+      <div class="sub">warm paper by day. soft ink by night.</div>
+    </div>
+    <div style="position:absolute;left:30px;top:1000px;transform:rotate(-7deg)">${Handy.phone(`${RAW}/iphone-list.png`, 700)}</div>
+    <div style="position:absolute;left:470px;top:900px;transform:rotate(5deg)">${Handy.phone(`${RAW}/iphone-list-dark.png`, 780)}</div>`],
+
+  ["iphone", "06-widgets", "paper wallpaper", () => `
+    <div class="head">
+      <h1>your next task,<br>right on your ${Handy.underlined("home screen.")}</h1>
+      <div class="sub">small and large widgets.</div>
+    </div>
+    <div class="bottom" style="top:900px;transform:translateX(-50%) rotate(-1.5deg)">${Handy.widget("large", 2.86)}</div>
+    <div class="home-row" style="left:150px;top:2130px">
+      <div style="transform:rotate(2deg)">${Handy.widget("small", 2.86)}</div>
+      <div class="app-tile" style="margin-top:40px">${iconImg(330)}<span>handy</span></div>
+    </div>`],
+
+  ["iphone", "07-feel", "paper", () => `
+    <div class="head">
+      <h1>a little ${Handy.circled("chime")}<br>when it's done.</h1>
+      <div class="sub">gentle sounds and haptics, if you like.</div>
+    </div>
+    <div class="bottom" style="top:850px">${Handy.phone(`${RAW}/iphone-settings.png`, 860)}</div>
+    <div class="badge" style="left:30px;top:1700px;transform:rotate(-8deg)">${Handy.icon("sound")}</div>
+    <div class="badge" style="left:1050px;top:2050px;transform:rotate(8deg)">${Handy.icon("feedback")}</div>`],
+
+  // ── iPad 13" (2064 × 2752) ──
+  ["ipad", "01-hero", "paper", () => `
+    <div class="head">
+      <div style="display:flex;justify-content:center;margin-bottom:34px">${iconImg(180)}</div>
+      <h1>room for ${Handy.circled("everything.")}</h1>
+      <div class="sub">all three lists, side by side on ipad.</div>
+    </div>
+    <div class="bottom" style="top:900px">${Handy.tablet(`${RAW}/ipad-list.png`, 1660)}</div>
+    ${crop("ipad-list.png", [33, 170, 652, 800], 1000, "left:960px;top:1240px;transform:rotate(2.5deg);border-radius:56px", 2064)}`],
+
+  ["ipad", "02-dark", "paper dark-paper", () => `
+    <div class="head">
+      <h1>easy on the eyes,<br>day or ${Handy.underlined("night.", "var(--accent-dark)")}</h1>
+      <div class="sub">warm paper by day. soft ink by night.</div>
+    </div>
+    <div class="bottom" style="top:960px">${Handy.tablet(`${RAW}/ipad-list-dark.png`, 1660)}</div>
+    ${crop("ipad-list-dark.png", [706, 170, 652, 800], 1000, "left:90px;top:1300px;transform:rotate(-2.5deg);border-radius:56px;box-shadow:0 40px 90px rgba(0,0,0,0.55)", 2064)}`],
+
+  ["ipad", "03-widgets", "paper wallpaper", () => `
+    <div class="head">
+      <h1>your next task, right on<br>your ${Handy.underlined("home screen.")}</h1>
+      <div class="sub">small and large widgets for iphone and ipad.</div>
+    </div>
+    <div style="position:absolute;left:170px;top:1010px;transform:rotate(-1.5deg)">${Handy.widget("large", 3.05)}</div>
+    <div style="position:absolute;left:1390px;top:1060px;transform:rotate(2deg)">${Handy.widget("small", 3.05)}</div>
+    <div class="app-tile" style="position:absolute;left:1470px;top:1720px">${iconImg(360)}<span>handy</span></div>`],
+];
+
+(async () => {
+  await Handy.load();
+  document.getElementById("root").innerHTML = shots.map(([device, name, bg, html]) =>
+    `<section class="shot ${device} ${bg}" data-name="${device}/${name}">${html()}</section>`).join("");
+  await Promise.all([...document.images].map((img) => img.decode().catch(() => {})));
+  window.READY = true;
+})();
+</script>
+</body>
+</html>
