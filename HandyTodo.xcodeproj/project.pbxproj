@@ -70,7 +70,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2E2C6F495A0287D0F9D5367A /* Boris.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = Boris.ttf; path = HandyTodo/Fonts/Boris.ttf; sourceTree = "<group>"; };
+		017649BC3EECD697C52E9F32 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E2C6F495A0287D0F9D5367A /* Boris.ttf */ = {isa = PBXFileReference; includeInIndex = 1; path = Boris.ttf; sourceTree = "<group>"; };
 		30976DBB29F6320700229416 /* handy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = handy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30976DBE29F6320700229416 /* HandyTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyTodoApp.swift; sourceTree = "<group>"; };
 		30976DC029F6320700229416 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -88,22 +89,23 @@
 		30976DEE29F7141F00229416 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		30ED7F6329F73162000DD6E4 /* View+Rotate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Rotate.swift"; sourceTree = "<group>"; };
 		30ED7F6629F7978B000DD6E4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		343A4FF33C35CC7793E03C50 /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SettingsView.swift; path = HandyTodo/Views/SettingsView.swift; sourceTree = "<group>"; };
+		343A4FF33C35CC7793E03C50 /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3B5D6BF25A32D0DD5B015770 /* HandyWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HandyWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EF957B6E2B9CA18DF23487C /* Boris-License.txt */ = {isa = PBXFileReference; includeInIndex = 1; name = "Boris-License.txt"; path = "HandyTodo/Fonts/Boris-License.txt"; sourceTree = "<group>"; };
-		45ECB29225405FC74577DC5C /* TaskFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskFeedback.swift; path = HandyTodo/Services/TaskFeedback.swift; sourceTree = "<group>"; };
-		4A9390360B319F52CDF9C793 /* HandyWidgets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HandyWidgets.swift; path = HandyWidgets/HandyWidgets.swift; sourceTree = "<group>"; };
-		50EC795CA26796567B8EABE8 /* HandySymbol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HandySymbol.swift; path = Shared/HandySymbol.swift; sourceTree = "<group>"; };
-		55BD291F213035828BA79E01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		6FE554DC077F63E0C50A3369 /* DoNowCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DoNowCard.swift; path = Shared/DoNowCard.swift; sourceTree = "<group>"; };
-		76ECB5695733B0B3DA527376 /* complete.wav */ = {isa = PBXFileReference; includeInIndex = 1; name = complete.wav; path = HandyTodo/Sounds/complete.wav; sourceTree = "<group>"; };
-		7731C0E9F238CC031935897C /* HandyMorphPaths.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HandyMorphPaths.swift; path = Shared/HandyMorphPaths.swift; sourceTree = "<group>"; };
-		7DF152FED3D6B31040053836 /* WidgetSnapshotPublisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WidgetSnapshotPublisher.swift; path = HandyTodo/Services/WidgetSnapshotPublisher.swift; sourceTree = "<group>"; };
-		8567077C3A0D2E108451E5E6 /* HandyIcon.icon */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.icon; name = HandyIcon.icon; path = HandyTodo/HandyIcon.icon; sourceTree = "<group>"; };
-		A4A78EB5DCC75451C51EA21E /* HandyFeedbackSymbol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HandyFeedbackSymbol.swift; path = Shared/HandyFeedbackSymbol.swift; sourceTree = "<group>"; };
-		AAFF8228C0DC56177B51CC8B /* WidgetSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WidgetSnapshot.swift; path = Shared/WidgetSnapshot.swift; sourceTree = "<group>"; };
-		B26280C907690AEF85CD8C08 /* TodoItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TodoItem.swift; path = HandyTodo/Models/TodoItem.swift; sourceTree = "<group>"; };
-		B5D0CC8F88C6B15EF6CB182F /* delete.wav */ = {isa = PBXFileReference; includeInIndex = 1; name = delete.wav; path = HandyTodo/Sounds/delete.wav; sourceTree = "<group>"; };
+		3EF957B6E2B9CA18DF23487C /* Boris-License.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = "Boris-License.txt"; sourceTree = "<group>"; };
+		45ECB29225405FC74577DC5C /* TaskFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskFeedback.swift; sourceTree = "<group>"; };
+		4A9390360B319F52CDF9C793 /* HandyWidgets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HandyWidgets.swift; sourceTree = "<group>"; };
+		50EC795CA26796567B8EABE8 /* HandySymbol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HandySymbol.swift; sourceTree = "<group>"; };
+		55BD291F213035828BA79E01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6FE554DC077F63E0C50A3369 /* DoNowCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DoNowCard.swift; sourceTree = "<group>"; };
+		71A2528BBBD670818A639331 /* HandyWidgets.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = HandyWidgets.entitlements; sourceTree = "<group>"; };
+		76ECB5695733B0B3DA527376 /* complete.wav */ = {isa = PBXFileReference; includeInIndex = 1; path = complete.wav; sourceTree = "<group>"; };
+		7731C0E9F238CC031935897C /* HandyMorphPaths.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HandyMorphPaths.swift; sourceTree = "<group>"; };
+		7DF152FED3D6B31040053836 /* WidgetSnapshotPublisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotPublisher.swift; sourceTree = "<group>"; };
+		8567077C3A0D2E108451E5E6 /* HandyIcon.icon */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.icon; path = HandyIcon.icon; sourceTree = "<group>"; };
+		A4A78EB5DCC75451C51EA21E /* HandyFeedbackSymbol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HandyFeedbackSymbol.swift; sourceTree = "<group>"; };
+		AAFF8228C0DC56177B51CC8B /* WidgetSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
+		B26280C907690AEF85CD8C08 /* TodoItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		B5D0CC8F88C6B15EF6CB182F /* delete.wav */ = {isa = PBXFileReference; includeInIndex = 1; path = delete.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00B876F0ED495954183FE0FB /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AAFF8228C0DC56177B51CC8B /* WidgetSnapshot.swift */,
+				50EC795CA26796567B8EABE8 /* HandySymbol.swift */,
+				A4A78EB5DCC75451C51EA21E /* HandyFeedbackSymbol.swift */,
+				7731C0E9F238CC031935897C /* HandyMorphPaths.swift */,
+				6FE554DC077F63E0C50A3369 /* DoNowCard.swift */,
+			);
+			name = Shared;
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		1493E2BA8C040CA7D86E42C8 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,24 +152,11 @@
 		30976DB229F6320700229416 = {
 			isa = PBXGroup;
 			children = (
-				30976DBD29F6320700229416 /* HandyTodo */,
+				30976DBD29F6320700229416 /* handy */,
 				30976DBC29F6320700229416 /* Products */,
 				30ED7F6529F7978B000DD6E4 /* Frameworks */,
-				45ECB29225405FC74577DC5C /* TaskFeedback.swift */,
-				7DF152FED3D6B31040053836 /* WidgetSnapshotPublisher.swift */,
-				343A4FF33C35CC7793E03C50 /* SettingsView.swift */,
-				AAFF8228C0DC56177B51CC8B /* WidgetSnapshot.swift */,
-				2E2C6F495A0287D0F9D5367A /* Boris.ttf */,
-				3EF957B6E2B9CA18DF23487C /* Boris-License.txt */,
-				76ECB5695733B0B3DA527376 /* complete.wav */,
-				B5D0CC8F88C6B15EF6CB182F /* delete.wav */,
-				4A9390360B319F52CDF9C793 /* HandyWidgets.swift */,
-				B26280C907690AEF85CD8C08 /* TodoItem.swift */,
-				8567077C3A0D2E108451E5E6 /* HandyIcon.icon */,
-				50EC795CA26796567B8EABE8 /* HandySymbol.swift */,
-				A4A78EB5DCC75451C51EA21E /* HandyFeedbackSymbol.swift */,
-				7731C0E9F238CC031935897C /* HandyMorphPaths.swift */,
-				6FE554DC077F63E0C50A3369 /* DoNowCard.swift */,
+				00B876F0ED495954183FE0FB /* Shared */,
+				7D1748CBCD90F510C6566D13 /* HandyWidgets */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,7 +169,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		30976DBD29F6320700229416 /* HandyTodo */ = {
+		30976DBD29F6320700229416 /* handy */ = {
 			isa = PBXGroup;
 			children = (
 				30976DEE29F7141F00229416 /* Info.plist */,
@@ -181,7 +183,10 @@
 				30976DC729F6320800229416 /* Assets.xcassets */,
 				30976DC929F6320800229416 /* HandyTodo.entitlements */,
 				30976DCA29F6320800229416 /* Preview Content */,
+				C4668CF99C8642EA9AD1749C /* Sounds */,
+				8567077C3A0D2E108451E5E6 /* HandyIcon.icon */,
 			);
+			name = handy;
 			path = HandyTodo;
 			sourceTree = "<group>";
 		};
@@ -200,6 +205,7 @@
 				30976DDC29F6341E00229416 /* AddTodoItemView.swift */,
 				30976DDF29F6353700229416 /* TodoItemView.swift */,
 				30976DE229F6361B00229416 /* TodoCategoryView.swift */,
+				343A4FF33C35CC7793E03C50 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -208,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				30976DD429F632CC00229416 /* CategoryModel.swift */,
+				B26280C907690AEF85CD8C08 /* TodoItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,6 +232,8 @@
 		30976DE429F6367B00229416 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				45ECB29225405FC74577DC5C /* TaskFeedback.swift */,
+				7DF152FED3D6B31040053836 /* WidgetSnapshotPublisher.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -233,6 +242,8 @@
 			isa = PBXGroup;
 			children = (
 				30976DEC29F713D800229416 /* EduQLDBeginner.ttf */,
+				2E2C6F495A0287D0F9D5367A /* Boris.ttf */,
+				3EF957B6E2B9CA18DF23487C /* Boris-License.txt */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -244,6 +255,27 @@
 				1493E2BA8C040CA7D86E42C8 /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7D1748CBCD90F510C6566D13 /* HandyWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				4A9390360B319F52CDF9C793 /* HandyWidgets.swift */,
+				017649BC3EECD697C52E9F32 /* Info.plist */,
+				71A2528BBBD670818A639331 /* HandyWidgets.entitlements */,
+			);
+			name = HandyWidgets;
+			path = HandyWidgets;
+			sourceTree = "<group>";
+		};
+		C4668CF99C8642EA9AD1749C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				76ECB5695733B0B3DA527376 /* complete.wav */,
+				B5D0CC8F88C6B15EF6CB182F /* delete.wav */,
+			);
+			name = Sounds;
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
