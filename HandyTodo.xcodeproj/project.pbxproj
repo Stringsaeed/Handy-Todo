@@ -71,7 +71,7 @@
 
 /* Begin PBXFileReference section */
 		017649BC3EECD697C52E9F32 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2E2C6F495A0287D0F9D5367A /* Boris.ttf */ = {isa = PBXFileReference; includeInIndex = 1; path = Boris.ttf; sourceTree = "<group>"; };
+		2E2C6F495A0287D0F9D5367A /* Boris.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; path = Boris.ttf; sourceTree = "<group>"; };
 		30976DBB29F6320700229416 /* handy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = handy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		30976DBE29F6320700229416 /* HandyTodoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyTodoApp.swift; sourceTree = "<group>"; };
 		30976DC029F6320700229416 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -91,21 +91,21 @@
 		30ED7F6629F7978B000DD6E4 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		343A4FF33C35CC7793E03C50 /* SettingsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		3B5D6BF25A32D0DD5B015770 /* HandyWidgets.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HandyWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		3EF957B6E2B9CA18DF23487C /* Boris-License.txt */ = {isa = PBXFileReference; includeInIndex = 1; path = "Boris-License.txt"; sourceTree = "<group>"; };
+		3EF957B6E2B9CA18DF23487C /* Boris-License.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Boris-License.txt"; sourceTree = "<group>"; };
 		45ECB29225405FC74577DC5C /* TaskFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TaskFeedback.swift; sourceTree = "<group>"; };
 		4A9390360B319F52CDF9C793 /* HandyWidgets.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HandyWidgets.swift; sourceTree = "<group>"; };
 		50EC795CA26796567B8EABE8 /* HandySymbol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HandySymbol.swift; sourceTree = "<group>"; };
 		55BD291F213035828BA79E01 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6FE554DC077F63E0C50A3369 /* DoNowCard.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DoNowCard.swift; sourceTree = "<group>"; };
 		71A2528BBBD670818A639331 /* HandyWidgets.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = HandyWidgets.entitlements; sourceTree = "<group>"; };
-		76ECB5695733B0B3DA527376 /* complete.wav */ = {isa = PBXFileReference; includeInIndex = 1; path = complete.wav; sourceTree = "<group>"; };
+		76ECB5695733B0B3DA527376 /* complete.wav */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = audio.wav; path = complete.wav; sourceTree = "<group>"; };
 		7731C0E9F238CC031935897C /* HandyMorphPaths.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HandyMorphPaths.swift; sourceTree = "<group>"; };
 		7DF152FED3D6B31040053836 /* WidgetSnapshotPublisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetSnapshotPublisher.swift; sourceTree = "<group>"; };
 		8567077C3A0D2E108451E5E6 /* HandyIcon.icon */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.icon; path = HandyIcon.icon; sourceTree = "<group>"; };
 		A4A78EB5DCC75451C51EA21E /* HandyFeedbackSymbol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HandyFeedbackSymbol.swift; sourceTree = "<group>"; };
 		AAFF8228C0DC56177B51CC8B /* WidgetSnapshot.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WidgetSnapshot.swift; sourceTree = "<group>"; };
 		B26280C907690AEF85CD8C08 /* TodoItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
-		B5D0CC8F88C6B15EF6CB182F /* delete.wav */ = {isa = PBXFileReference; includeInIndex = 1; path = delete.wav; sourceTree = "<group>"; };
+		B5D0CC8F88C6B15EF6CB182F /* delete.wav */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = audio.wav; path = delete.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +137,6 @@
 				7731C0E9F238CC031935897C /* HandyMorphPaths.swift */,
 				6FE554DC077F63E0C50A3369 /* DoNowCard.swift */,
 			);
-			name = Shared;
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -264,7 +263,6 @@
 				017649BC3EECD697C52E9F32 /* Info.plist */,
 				71A2528BBBD670818A639331 /* HandyWidgets.entitlements */,
 			);
-			name = HandyWidgets;
 			path = HandyWidgets;
 			sourceTree = "<group>";
 		};
@@ -274,7 +272,6 @@
 				76ECB5695733B0B3DA527376 /* complete.wav */,
 				B5D0CC8F88C6B15EF6CB182F /* delete.wav */,
 			);
-			name = Sounds;
 			path = Sounds;
 			sourceTree = "<group>";
 		};
@@ -557,7 +554,7 @@
 				CODE_SIGN_ENTITLEMENTS = HandyTodo/HandyTodo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_ASSET_PATHS = "\"HandyTodo/Preview Content\"";
 				DEVELOPMENT_TEAM = V3HN8HXZYK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -566,13 +563,18 @@
 				INFOPLIST_FILE = HandyTodo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = handy;
 				INFOPLIST_KEY_CFBundleName = handy;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -581,7 +583,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 26.19.03;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stringsaeed.handy.todo;
 				PRODUCT_NAME = handy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -603,7 +605,7 @@
 				CODE_SIGN_ENTITLEMENTS = HandyTodo/HandyTodo.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 100;
 				DEVELOPMENT_ASSET_PATHS = "\"HandyTodo/Preview Content\"";
 				DEVELOPMENT_TEAM = V3HN8HXZYK;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -612,13 +614,18 @@
 				INFOPLIST_FILE = HandyTodo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = handy;
 				INFOPLIST_KEY_CFBundleName = handy;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -627,7 +634,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 26.19.03;
 				PRODUCT_BUNDLE_IDENTIFIER = com.stringsaeed.handy.todo;
 				PRODUCT_NAME = handy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
