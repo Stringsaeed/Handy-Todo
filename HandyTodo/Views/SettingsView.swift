@@ -42,8 +42,7 @@ struct SettingsView: View {
             .foregroundStyle(HandyTheme.ink)
             .toolbarBackground(HandyTheme.paper, for: .navigationBar)
             .toolbarBackground(.visible, for: .navigationBar)
-            .navigationTitle("settings")
-            .navigationBarTitleDisplayMode(.inline)
+            .handyNavigationTitle("settings")
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button { dismiss() } label: {
@@ -82,7 +81,6 @@ private struct FontLicenseView: View {
         }
         .background(HandyTheme.paper.ignoresSafeArea())
         .foregroundStyle(HandyTheme.ink)
-        .navigationTitle(title.lowercased())
-        .navigationBarTitleDisplayMode(.inline)
+        .handyNavigationTitle(title.lowercased())
     }
 }
