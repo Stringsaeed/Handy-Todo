@@ -7,7 +7,7 @@ struct HandyTodoApp: App {
 
     init() {
         storage = Result { try HandyPersistence.makeContainer() }
-        if let font = UIFont(name: "Boris-Regular", size: 20) {
+        if let font = UIFont(name: "Oregano-Regular", size: 20) {
             UINavigationBar.appearance().titleTextAttributes = [.font: font]
         }
     }

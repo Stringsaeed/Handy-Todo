@@ -1,6 +1,6 @@
 # handy
 
-A SwiftUI to-do app for iPhone and iPad. Keep tasks in three priority levels, with compact lists, inline task creation, Boris typography, optional task sounds and haptics, and small and large Home Screen widgets.
+A SwiftUI to-do app for iPhone and iPad. Keep tasks in three priority levels, with compact lists, inline task creation, Oregano typography, optional task sounds and haptics, and small and large Home Screen widgets.
 
 ## Run locally
 
@@ -24,13 +24,13 @@ Add a widget by editing the Home Screen and searching for handy. Both small and 
 
 ## Fonts and sounds
 
-- Boris by Giulia Boggio is used for app text. Its supplied license is in `HandyTodo/Fonts/Boris-License.txt`, with the original document preserved in `OpenSource License.rtfd`.
+- Oregano by Brian J. Bonislawsky (Astigmatic) is used for app text under the SIL Open Font License 1.1. Its license is in `HandyTodo/Fonts/Oregano-License.txt`.
 - Full font licenses and credits are also available in the app's Settings. Font licenses apply independently of the app source.
 - Feedback sounds are original generated tones. Regenerate them with `python3 scripts/generate-sounds.py`. Sounds respect silent mode; haptics require a supported physical device. Both can be switched off in Settings.
 
 ## Manual verification
 
-Create a task in each priority. Empty or whitespace-only titles must not save. Complete and reopen a task, swipe to delete, and relaunch to verify persistence. Open the Boris font license in Settings and check the feedback toggles. Add both widget sizes, then add, finish, and delete tasks in the app to check their snapshots. Check iPhone and iPad layouts, dark appearance, larger text, and Reduce Motion. Verify sound and haptics on an iPhone.
+Create a task in each priority. Empty or whitespace-only titles must not save. Complete and reopen a task, swipe to delete, and relaunch to verify persistence. Open the Oregano font license in Settings and check the feedback toggles. Add both widget sizes, then add, finish, and delete tasks in the app to check their snapshots. Check iPhone and iPad layouts, dark appearance, larger text, and Reduce Motion. Verify sound and haptics on an iPhone.
 
 ## Storage migration regression test
 

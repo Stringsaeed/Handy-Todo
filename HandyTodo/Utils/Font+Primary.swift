@@ -2,7 +2,7 @@ import SwiftUI
 
 extension Font {
     static func handWritten(_ size: CGFloat = 16) -> Font {
-        .custom("Boris-Regular", size: size, relativeTo: .body)
+        .custom("Oregano-Regular", size: size, relativeTo: .body)
     }
 }
 
