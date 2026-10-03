@@ -3,6 +3,7 @@ import SwiftData
 
 struct TodoCategoryView: View {
     let category: Category
+    let onAdd: () -> Void
     @State private var saveError: String?
     @Environment(\.modelContext) private var context
     @Query private var queriedItems: [TodoItem]
@@ -11,7 +12,8 @@ struct TodoCategoryView: View {
         queriedItems.filter { !$0.isCompleted } + queriedItems.filter(\.isCompleted)
     }
 
-    init(category: Category) {
+    init(category: Category, onAdd: @escaping () -> Void = {}) {
+        self.onAdd = onAdd
         self.category = category
         let categoryName = category.rawValue
         _queriedItems = Query(filter: #Predicate<TodoItem> { $0.category == categoryName },
@@ -20,7 +22,19 @@ struct TodoCategoryView: View {
 
     var body: some View {
         VStack(spacing: 0) {
-            categoryHeader
+            HStack(spacing: 0) {
+                TaskCategoryHeader(category: category, count: unfinishedCount)
+                Button(action: onAdd) {
+                    HandySymbol(.add, size: 20)
+                        .foregroundStyle(category.color)
+                        .frame(width: 44, height: 44)
+                        .contentShape(Rectangle())
+                }
+                .buttonStyle(.plain)
+                .accessibilityLabel("add a \(category.rawValue.lowercased()) task")
+            }
+            .padding(.leading, 12)
+            .padding(.trailing, 4)
             List {
                 ForEach(items, id: \.persistentModelID) { item in
                     Button {
@@ -49,9 +63,6 @@ struct TodoCategoryView: View {
             .contentMargins(.vertical, 0, for: .scrollContent)
             .scrollDismissesKeyboard(.interactively)
             .frame(maxHeight: .infinity)
-            Divider().overlay(HandyTheme.ink.opacity(0.08))
-            InlineTaskEntry(category: category, onAdd: addTask)
-                .padding(.horizontal, 12)
         }
         .background(HandyTheme.card)
         .clipShape(RoundedRectangle(cornerRadius: 16))
@@ -61,30 +72,7 @@ struct TodoCategoryView: View {
         message: { Text((saveError ?? "please try again.").lowercased()) }
     }
 
-    private var categoryHeader: some View {
-        HStack(spacing: 8) {
-            Text(category.number)
-                .font(.handWritten(15))
-                .frame(width: 24, height: 24)
-                .background(category.color.opacity(0.15), in: Circle())
-                .foregroundStyle(category.color)
-            Text(category.rawValue.lowercased())
-                .font(.handWritten(21))
-            Spacer(minLength: 4)
-            Text("\(items.filter { !$0.isCompleted }.count)")
-                .font(.handWritten(16))
-                .foregroundStyle(HandyTheme.ink.opacity(0.5))
-        }
-        .foregroundStyle(HandyTheme.ink)
-        .padding(.horizontal, 12)
-        .padding(.top, 8)
-        .padding(.bottom, 4)
-    }
-
-    private func addTask(text: String, date: Date) -> Bool {
-        context.insert(TodoItem(text: text, date: date, category: category.rawValue))
-        return save()
-    }
+    private var unfinishedCount: Int { queriedItems.filter { !$0.isCompleted }.count }
 
     private func save() -> Bool {
         do {
@@ -95,5 +83,27 @@ struct TodoCategoryView: View {
             saveError = error.localizedDescription
             return false
         }
+    }
+}
+
+struct TaskCategoryHeader: View {
+    let category: Category
+    let count: Int
+    var body: some View {
+        HStack(spacing: 8) {
+            Text(category.number)
+                .font(.handWritten(15))
+                .frame(width: 24, height: 24)
+                .background(category.color.opacity(0.15), in: Circle())
+                .foregroundStyle(category.color)
+            Text(category.rawValue.lowercased())
+                .font(.handWritten(21))
+            Spacer(minLength: 4)
+            Text("\(count)")
+                .font(.handWritten(16))
+                .foregroundStyle(HandyTheme.ink.opacity(0.5))
+        }
+        .foregroundStyle(HandyTheme.ink)
+        .frame(height: 44)
     }
 }

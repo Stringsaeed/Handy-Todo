@@ -1,4 +1,4 @@
-"""Split the supplied QuiverAI/Arrow icon sheet without altering its paths."""
+"""Extract the original icon sheet and the standalone hand-drawn icons."""
 from pathlib import Path
 import copy
 import json
@@ -24,17 +24,31 @@ icons = {
     "Close": (range(25, 27), "54 175 26 26"),
 }
 assert sorted({index for indices, _ in icons.values() for index in indices}) == list(range(len(parts)))
-for name, (indices, bounds) in icons.items():
+standalone = {
+    "Shuffle": ROOT / "Design/Shuffle-B.svg",
+    "GitHub": ROOT / "Design/GitHub.svg",
+}
+for name in dict.fromkeys([*icons, *standalone]):
     folder = ROOT / f"HandyTodo/Assets.xcassets/Handy{name}.imageset"
     folder.mkdir(exist_ok=True)
     size = "18" if name == "Delete" else "64"
-    svg = ET.Element(f"{{{NS}}}svg", {"width": size, "height": size, "viewBox": bounds, "fill": "none"})
-    svg.append(ET.Comment(" SVG created with Arrow, by QuiverAI (https://quiver.ai); extracted from supplied artwork. "))
-    for index in indices:
-        svg.append(copy.deepcopy(parts[index]))
+    if name in standalone:
+        svg = ET.parse(standalone[name]).getroot()
+        svg.set("width", size)
+        svg.set("height", size)
+        for element in svg.iter():
+            for attribute in ("stroke", "fill"):
+                if element.get(attribute) == "currentColor":
+                    element.set(attribute, "#080808")
+    else:
+        indices, bounds = icons[name]
+        svg = ET.Element(f"{{{NS}}}svg", {"width": size, "height": size, "viewBox": bounds, "fill": "none"})
+        svg.append(ET.Comment(" SVG created with Arrow, by QuiverAI (https://quiver.ai); extracted from supplied artwork. "))
+        for index in indices:
+            svg.append(copy.deepcopy(parts[index]))
     ET.ElementTree(svg).write(folder / f"{name}.svg", encoding="utf-8", xml_declaration=True)
     contents = {"images": [{"filename": f"{name}.svg", "idiom": "universal"}],
                 "info": {"author": "xcode", "version": 1},
                 "properties": {"preserves-vector-representation": True, "template-rendering-intent": "template"}}
     (folder / "Contents.json").write_text(json.dumps(contents, indent=2) + "\n")
-print(f"Extracted {len(icons)} vector icons from {len(parts)} shapes.")
+print(f"Extracted {len(set(icons) | set(standalone))} vector icons.")

@@ -13,6 +13,7 @@ struct HandySymbol: View {
         case muted = "HandyMuted"
         case feedback = "HandyFeedback"
         case calendar = "HandyCalendar"
+        case github = "HandyGitHub"
     }
 
     let kind: Kind
