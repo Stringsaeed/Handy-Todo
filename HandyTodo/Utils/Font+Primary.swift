@@ -1,14 +1,14 @@
-//
-//  Font+Primary.swift
-//  HandyTodo
-//
-//  Created by Muhammed Saeed on 24/04/2023.
-//
-
 import SwiftUI
 
 extension Font {
-    static func handWritten(_ size: CGFloat = 16.0) -> Font {
-        return .custom("Edu QLD Beginner", size: size)
+    static func handWritten(_ size: CGFloat = 16) -> Font {
+        .custom("Boris-Regular", size: size, relativeTo: .body)
     }
+}
+
+enum HandyTheme {
+    static let paper = Color("Paper")
+    static let ink = Color("Ink")
+    static let accent = Color("HandyAccent")
+    static let card = Color("Card")
 }
