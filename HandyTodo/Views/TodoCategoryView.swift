@@ -1,125 +1,99 @@
-//
-//  TodoCategoryView.swift
-//  HandyTodo
-//
-//  Created by Muhammed Saeed on 24/04/2023.
-//
-
 import SwiftUI
+import SwiftData
 
 struct TodoCategoryView: View {
     let category: Category
-    @State var isAddTodoSheetPresented = false
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    @FetchRequest(entity: TodoItem.entity(), sortDescriptors: [], predicate: nil) var items: FetchedResults<TodoItem>
-    
-    init( category: Category) {
-        _items = FetchRequest(
-            entity: TodoItem.entity(),
-            sortDescriptors: [
-                NSSortDescriptor(keyPath: \TodoItem.timestamp, ascending: true)
-            ],
-            predicate: NSPredicate(format: "category == %@", category.rawValue)
-        )
-        self.category = category
+    @State private var saveError: String?
+    @Environment(\.modelContext) private var context
+    @Query private var queriedItems: [TodoItem]
+
+    private var items: [TodoItem] {
+        queriedItems.filter { !$0.isCompleted } + queriedItems.filter(\.isCompleted)
     }
-    
+
+    init(category: Category) {
+        self.category = category
+        let categoryName = category.rawValue
+        _queriedItems = Query(filter: #Predicate<TodoItem> { $0.category == categoryName },
+                              sort: \TodoItem.timestamp)
+    }
+
     var body: some View {
-        NavigationStack {
+        VStack(spacing: 0) {
+            categoryHeader
             List {
-                ForEach(items) { item in
+                ForEach(items, id: \.persistentModelID) { item in
                     Button {
-                        self.toggleDone(todo: item)
+                        let completing = !item.isCompleted
+                        withAnimation(.spring(response: 0.35)) { item.isCompleted.toggle() }
+                        if save() { TaskFeedback.play(completing ? .completion : .undo) }
                     } label: {
                         TodoItemView(item: item)
                     }
                     .buttonStyle(.plain)
+                    .accessibilityLabel("\(item.isCompleted ? "mark incomplete" : "complete") \((item.text ?? "task").lowercased())")
+                    .listRowInsets(EdgeInsets(top: 2, leading: 12, bottom: 2, trailing: 12))
+                    .listRowBackground(HandyTheme.card)
+                    .listRowSeparatorTint(HandyTheme.ink.opacity(0.1))
+                    .swipeActions {
+                        Button(role: .destructive) {
+                            withAnimation { context.delete(item) }
+                            if save() { TaskFeedback.play(.deletion) }
+                        } label: { Label { Text("delete") } icon: { Image("HandyDelete").renderingMode(.template) } }
+                    }
                 }
-                .onDelete { self.delete(at: $0) }
             }
-            .background(.black)
             .listStyle(.plain)
-            .frame(maxWidth: .infinity)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        isAddTodoSheetPresented = true
-                    } label: {
-                        Image(systemName: "plus")
-                    }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    if items.count > 0 {
-                        Text("\(category.rawValue) (\(items.count))")
-                            .font(.handWritten(28))
-                            .font(.largeTitle)
-                        
-                    } else {
-                        Text("\(category.rawValue)")
-                            .font(.handWritten(28))
-                            .font(.largeTitle)
-                    }
-                }
-                
-            }
-    
-            .animation(.default, value: items.count)
-            .sheet(isPresented: $isAddTodoSheetPresented, onDismiss: {
-                isAddTodoSheetPresented = false
-            }) {
-                NavigationView {
-                    AddTodoView(onDone: { text, date, category in
-                        self.add(text: text, date: date, category: category)
-                        isAddTodoSheetPresented = false
-                    }, category: category)
-                }
-            }
-            
+            .environment(\.defaultMinListRowHeight, 44)
+            .scrollContentBackground(.hidden)
+            .contentMargins(.vertical, 0, for: .scrollContent)
+            .scrollDismissesKeyboard(.interactively)
+            .frame(maxHeight: .infinity)
+            Divider().overlay(HandyTheme.ink.opacity(0.08))
+            InlineTaskEntry(category: category, onAdd: addTask)
+                .padding(.horizontal, 12)
         }
+        .background(HandyTheme.card)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .alert("couldn't save your task", isPresented: Binding(
+            get: { saveError != nil }, set: { if !$0 { saveError = nil } }
+        )) { Button("ok", role: .cancel) { saveError = nil } }
+        message: { Text((saveError ?? "please try again.").lowercased()) }
     }
-}
 
-struct TodoCategoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        TodoCategoryView(category: .primary)
-            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-    }
-}
-
-extension TodoCategoryView {
-    func delete(at offset: IndexSet) {
-        withAnimation(.spring()) {
-            offset.map { items[$0] }.forEach(viewContext.delete)
-            saveContext()
+    private var categoryHeader: some View {
+        HStack(spacing: 8) {
+            Text(category.number)
+                .font(.handWritten(15))
+                .frame(width: 24, height: 24)
+                .background(category.color.opacity(0.15), in: Circle())
+                .foregroundStyle(category.color)
+            Text(category.rawValue.lowercased())
+                .font(.handWritten(21))
+            Spacer(minLength: 4)
+            Text("\(items.filter { !$0.isCompleted }.count)")
+                .font(.handWritten(16))
+                .foregroundStyle(HandyTheme.ink.opacity(0.5))
         }
+        .foregroundStyle(HandyTheme.ink)
+        .padding(.horizontal, 12)
+        .padding(.top, 8)
+        .padding(.bottom, 4)
     }
-    
-    func add(text: String, date: Date, category: Category = .primary) {
-        let todo = TodoItem(context: viewContext)
-        todo.id = UUID()
-        todo.text = text
-        todo.date = date
-        todo.category = category.rawValue
-        todo.isFinished = false
-        todo.timestamp = .now
-        
-        saveContext()
+
+    private func addTask(text: String, date: Date) -> Bool {
+        context.insert(TodoItem(text: text, date: date, category: category.rawValue))
+        return save()
     }
-    
-    func toggleDone(todo: TodoItem) {
-        let itemToUpdate = todo
-        itemToUpdate.isFinished.toggle()
-        saveContext()
-    }
-    
-    func saveContext() {
+
+    private func save() -> Bool {
         do {
-            try viewContext.save()
-        }
-        catch {
-            print(error.localizedDescription)
-            // handle errro
+            try context.save()
+            return true
+        } catch {
+            context.rollback()
+            saveError = error.localizedDescription
+            return false
         }
     }
 }

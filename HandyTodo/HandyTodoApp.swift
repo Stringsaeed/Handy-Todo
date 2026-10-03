@@ -1,32 +1,36 @@
-//
-//  HandyTodoApp.swift
-//  HandyTodo
-//
-//  Created by Muhammed Saeed on 24/04/2023.
-//
-
 import SwiftUI
+import SwiftData
 
 @main
 struct HandyTodoApp: App {
-    let persistenceController = PersistenceController.shared
-    
+    private let storage: Result<ModelContainer, Error>
+
     init() {
-        
-        /// setup font for UI components
-        UINavigationBar.appearance().largeTitleTextAttributes = [
-            .font: UIFont(name: "Edu QLD Beginner", size: 34.0)!
-        ]
-        
-        UINavigationBar.appearance().titleTextAttributes = [
-            .font: UIFont(name: "Edu QLD Beginner", size: 17.0)!
-        ]
+        storage = Result { try HandyPersistence.makeContainer() }
+        if let font = UIFont(name: "Boris-Regular", size: 20) {
+            UINavigationBar.appearance().titleTextAttributes = [.font: font]
+        }
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            Group {
+                switch storage {
+                case .success(let container):
+                    ContentView().modelContainer(container)
+                case .failure(let error):
+                    ContentUnavailableView {
+                        Label("couldn't open your tasks", systemImage: "externaldrive.badge.exclamationmark")
+                    } description: {
+                        Text("your task database has been kept. close handy and try again. \(error.localizedDescription.lowercased())")
+                    }
+                    .padding(24)
+                    .background(HandyTheme.paper)
+                }
+            }
+            .background(HandyTheme.paper.ignoresSafeArea())
+            .font(.handWritten())
+            .tint(HandyTheme.accent)
         }
     }
 }

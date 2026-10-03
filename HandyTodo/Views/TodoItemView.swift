@@ -1,52 +1,27 @@
-//
-//  TodoItemView.swift
-//  HandyTodo
-//
-//  Created by Muhammed Saeed on 24/04/2023.
-//
-
 import SwiftUI
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .none
-    formatter.timeStyle = .short
-    return formatter
-}()
-
 struct TodoItemView: View {
-    @ObservedObject var item: TodoItem
-    
-    var body: some View {
-        Label {
-            Text(item.text ?? "")
-                .accessibilityLabel(item.text ?? "")
-                .accessibilityIdentifier(item.text ?? "")
-                .lineLimit(1)
-            Spacer()
-            Text("\(item.date ?? .now, formatter: itemFormatter)")
-        } icon: {
-            Image(systemName: item.isFinished ?  "checkmark.circle.fill": "circle")
-                .foregroundColor(.white)
-        }
-        .font(.handWritten(21))
-        .strikethrough(item.isFinished)
-    }
-}
+    let item: TodoItem
 
-struct TodoItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        let item: TodoItem = {
-            let theItem = TodoItem(context: PersistenceController.preview.container.viewContext)
-            theItem.category = "Primary"
-            theItem.text = "test test test testtest testtesttesttesttest"
-            theItem.id = .init()
-            theItem.date = .now
-            theItem.timestamp = .now
-            theItem.isFinished = false
-            return theItem
-        }()
-        
-        return TodoItemView(item: item)
+    var body: some View {
+        HStack(alignment: .center, spacing: 10) {
+            HandySymbol(item.isCompleted ? .completed : .circle, size: 25)
+                .foregroundStyle(item.isCompleted ? HandyTheme.accent : HandyTheme.ink.opacity(0.35))
+            VStack(alignment: .leading, spacing: 3) {
+                Text((item.text ?? "untitled task").lowercased())
+                    .font(.handWritten(20))
+                    .strikethrough(item.isCompleted)
+                    .foregroundStyle(HandyTheme.ink.opacity(item.isCompleted ? 0.45 : 1))
+                    .fixedSize(horizontal: false, vertical: true)
+                if let date = item.date {
+                    Text(date.formatted(.dateTime.month(.abbreviated).day().hour().minute()).lowercased())
+                        .font(.handWritten(13))
+                        .foregroundStyle(HandyTheme.ink.opacity(0.5))
+                }
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(.vertical, 4)
+        .contentShape(Rectangle())
     }
 }
