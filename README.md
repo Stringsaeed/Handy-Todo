@@ -1,6 +1,6 @@
 # handy
 
-A SwiftUI to-do app for iPhone and iPad. Keep tasks in three priority levels, with compact lists, inline task creation, Oregano typography, optional task sounds and haptics, and small and large Home Screen widgets.
+A SwiftUI to-do app for iPhone and iPad. Keep tasks in three priority levels, with compact lists, a floating task composer, Oregano typography, optional task sounds and haptics, and small and large Home Screen widgets.
 
 ## Run locally
 
@@ -30,7 +30,7 @@ Add a widget by editing the Home Screen and searching for handy. Both small and 
 
 ## Manual verification
 
-Create a task in each priority. Empty or whitespace-only titles must not save. Complete and reopen a task, swipe to delete, and relaunch to verify persistence. Open the Oregano font license in Settings and check the feedback toggles. Add both widget sizes, then add, finish, and delete tasks in the app to check their snapshots. Check iPhone and iPad layouts, dark appearance, larger text, and Reduce Motion. Verify sound and haptics on an iPhone.
+Tap the plus beside each priority count to open the task composer above the keyboard. Check that the category cards keep their size and position behind its backdrop. Create a task in each priority, change its due date, and tap the backdrop to cancel a draft. Empty or whitespace-only titles must not save. Complete and reopen a task, swipe to delete, and relaunch to verify persistence. Open the Oregano font license in Settings and check the feedback toggles. Add both widget sizes, then add, finish, and delete tasks in the app to check their snapshots. Check iPhone and iPad layouts, dark appearance, larger text, and Reduce Motion. Verify sound and haptics on an iPhone.
 
 ## Storage migration regression test
 
@@ -44,7 +44,7 @@ The layered app icon is `HandyTodo/HandyIcon.icon`. Open it in Apple Icon Compos
 
 ## Interface icons
 
-Custom interface icons come from the supplied `Design/InterfaceIcons.svg`, whose source credits Arrow by QuiverAI. Run `python3 scripts/extract-interface-icons.py` to regenerate the individual vector image sets. The original paths are preserved; SwiftUI tints the assets for light and dark appearance.
+Custom interface icons come from the supplied `Design/InterfaceIcons.svg`, whose source credits Arrow by QuiverAI. The shuffle and GitHub icons use the standalone artwork in `Design/Shuffle-B.svg` and `Design/GitHub.svg`. Run `python3 scripts/extract-interface-icons.py` to regenerate the individual vector image sets. The source paths are preserved; SwiftUI tints the assets for light and dark appearance.
 
 Feedback icons morph between on and off outlines, sampled from the supplied SVG. Regenerate the geometry with `python3 scripts/generate-feedback-morph.py`. Reduce Motion disables this animation. The interface and task display use lowercase text; existing stored task titles and category keys remain intact.
 

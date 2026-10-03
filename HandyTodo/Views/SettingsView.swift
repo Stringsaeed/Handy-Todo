@@ -26,7 +26,9 @@ struct SettingsView: View {
                         .foregroundStyle(.secondary)
                 }
                 Section("made with open source") {
-                    Link("handy on github", destination: URL(string: "https://github.com/Stringsaeed/Handy-Todo")!)
+                    Link(destination: URL(string: "https://github.com/Stringsaeed/Handy-Todo")!) {
+                        Label { Text("handy on github") } icon: { HandySymbol(.github) }
+                    }
                     NavigationLink("oregano · astigmatic") {
                         FontLicenseView(title: "Oregano", credit: "Designed by Brian J. Bonislawsky, Astigmatic. © 2012. Used for Handy's app text under the SIL Open Font License 1.1.",
                                         resource: "Oregano-License", ext: "txt")
